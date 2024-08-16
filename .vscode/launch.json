@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Next.js: Full-stack Debugging",
+        "type": "node",
+        "request": "launch",
+        "runtimeExecutable": "npm",
+        "runtimeArgs": ["run", "dev"],
+        "port": 9229,
+        "console": "integratedTerminal",
+        "env": {
+          "NODE_ENV": "development"
+        },
+        "sourceMaps": true,
+        "skipFiles": ["<node_internals>/**"]
+      },
+      {
+        "name": "Next.js: Client-side Debugging",
+        "type": "chrome",
+        "request": "launch",
+        "url": "http://localhost:3000",
+        "webRoot": "${workspaceFolder}",
+        "breakOnLoad": true,
+        "sourceMaps": true,
+        "skipFiles": ["<node_internals>/**", "node_modules/**"]
+      }
+    ]
+  }
+  
