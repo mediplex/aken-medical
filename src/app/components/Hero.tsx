@@ -1,36 +1,23 @@
-import { LogoClouds, Nav } from "@/components";
+"use client";
+
+import Image from "next/image";
+import { LogoClouds, ModalForm } from "@/components";
 import {
-  CheckCircleIcon,
   ArrowRightCircleIcon,
 } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
-const data = {
-  tag: "Revolution in Cancer Treatment",
-  title: "Nanoparticle-based Radiopharmaceutical",
-  content:
-    "We develop a nanoparticle platform that embeds radioactive materials to deliver targeted radiation to cancer cells.",
-  benefits: [
-    "Embedding of a variety of radioactive materials",
-    "Compatibility with existing vectors",
-    "Enhanced targetting using a multi-vector approach",
-    "Seamless theranostics",
-  ],
-  navigation: [
-    { name: "Our Innovation", href: "#" },
-    { name: "Pipeline", href: "#" },
-    { name: "Our Team", href: "#" },
-    { name: "Company", href: "#" },
-  ],
-};
+export const Hero = ({ data }) => {
+  const [modalFormOpen, setModalFormOpen] = useState(true);
 
-export const Hero = () => {
+  // const switchmodalFormOpen =()=>{
+  //   setModalFormOpen(!modalFormOpen)
+  // }
+
   return (
     <div className="bg-white">
-      <header className="absolute inset-x-0 top-0 z-50 flex justify-center items-center">
-        <Nav items={data.navigation} />
-      </header>
-
-      <div className="relative isolate px-6 pt-14 lg:px-8">
+      <ModalForm open={modalFormOpen} setOpen={setModalFormOpen} />
+      <div className="relative isolate flex flex-col items-center px-6 pt-8 lg:px-8">
         <div
           aria-hidden="true"
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -44,26 +31,35 @@ export const Hero = () => {
           />
         </div>
 
+        {/* <Image
+          alt="Your Company"
+          src="/images/aken-medical-logo.webp"
+          className="h-12 w-auto"
+          height={64}
+          width={79}
+        /> */}
+
         {/* content */}
         <div className="mx-auto max-w-2xl pt-20">
           <div className="mb-8 flex justify-center">
-            <div className="relative rounded-lg bg-gray-900 px-3 py-1 text-sm leading-6 text-white ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div className="relative rounded-lg bg-blue-950 px-3 py-1 text-sm leading-6 text-white">
               {data.tag}
             </div>
           </div>
 
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-blue-950 sm:text-5xl">
               {data.title}
             </h1>
-            <p className="mt-6 text-pretty text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-pretty text-lg leading-8 text-blue-900">
               {data.content}
             </p>
 
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            {/* CTA */}
+            <div className="mt-10 flex flex-col justify-center items-center">
               <a
                 href="#"
-                className="flex w-full items-center justify-center gap-2 rounded-full bg-indigo-500 px-3.5 py-6 text-sm font-semibold text-white shadow-lg shadow-indigo-500"
+                className="from-38% to-62% flex w-full md:w-96 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500 px-3.5 py-6 text-sm font-semibold text-white shadow-lg shadow-blue-500"
               >
                 <ArrowRightCircleIcon height={24} width={24} />
                 <span>Learn more</span>
@@ -71,25 +67,7 @@ export const Hero = () => {
             </div>
 
             {/* list of benefits */}
-            <div className="mx-auto mt-16 flex flex-wrap divide-indigo-200 text-left">
-              {data.benefits.map((b, i) => (
-                <div key={i} className="flex md:w-1/2 items-center p-3">
-                  <div className="mr-3 flex-shrink-0">
-                    {
-                      <CheckCircleIcon
-                        className="text-indigo-500"
-                        height={48}
-                        width={48}
-                      />
-                    }
-                  </div>
-                  <div className="flex flex-col justify-center">
-                    {/* <h4 className="text-lg font-bold">Lorem ipsum</h4> */}
-                    <p>{b}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </div>
         <LogoClouds />
