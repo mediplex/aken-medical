@@ -31,6 +31,9 @@ export const ContactForm = () => {
       email: "",
       msg: "",
     },
+    resetOptions:{
+      keepIsSubmitted: false
+    }
   });
 
   const onSubmit: SubmitHandler<ContactFormData> = async (contactFormData) => {
@@ -45,8 +48,18 @@ export const ContactForm = () => {
       });
 
       if (response.ok) {
-        // console.log("Data submitted successfully");
-        reset();
+        console.log("Data submitted successfully");
+
+        // const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
+        //   console.log('This runs after 2 seconds');
+        //   reset()
+        // }, 2000);
+
+        const timeOutId = setTimeout(() => {
+          reset();
+        }, 5000);
+
+        // clearTimeout(timeoutId);
 
         // Handle success, e.g., show a success message
       } else {

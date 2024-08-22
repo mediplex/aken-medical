@@ -18,7 +18,7 @@ export const Hero = ({tag, title, content} : {tag: string, title: string, conten
         </p>
         <a
           href="#"
-          className="from-38% to-62% flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500 px-3.5 py-6 text-sm font-semibold text-white shadow-lg shadow-blue-500 md:w-96"
+          className="from-38% to-42% flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-sky-500 to-violet-500 px-3.5 py-6 text-sm font-semibold text-white shadow-lg shadow-blue-500 md:w-96"
         >
           <ArrowRightCircleIcon height={24} width={24} />
           <span>Learn more</span>
