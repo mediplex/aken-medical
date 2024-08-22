@@ -23,7 +23,7 @@ export const ContactForm = () => {
     handleSubmit,
     reset,
     register,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting, isSubmitSuccessful,},
   } = useForm<ContactFormData>({
     defaultValues: {
       formName: "Contact Form",
@@ -50,21 +50,13 @@ export const ContactForm = () => {
       if (response.ok) {
         console.log("Data submitted successfully");
 
-        // const timeoutId: ReturnType<typeof setTimeout> = setTimeout(() => {
-        //   console.log('This runs after 2 seconds');
-        //   reset()
-        // }, 2000);
-
         const timeOutId = setTimeout(() => {
           reset();
         }, 5000);
 
         // clearTimeout(timeoutId);
-
-        // Handle success, e.g., show a success message
       } else {
         console.error("Error submitting data");
-        // Handle error, e.g., show an error message
       }
     } catch (error) {
       console.error(error);
@@ -206,12 +198,14 @@ export const ContactForm = () => {
           className="mt-5 flex w-full items-center justify-center gap-1 rounded-full bg-blue-950 py-4 font-semibold text-blue-50 shadow-xl"
           type="submit"
         >
-          {isSubmitting ? (
+          {
+            isSubmitting ? (
             <>
               <PaperAirplaneIcon className="h-5 w-5 text-orange-500" />
               <span>Sending...</span>
             </>
-          ) : isSubmitSuccessful ? (
+          ) : 
+          isSubmitSuccessful ? (
             <>
               <CheckCircleIcon className="h-5 w-5 text-green-500" />
               <span>Sent with success</span>

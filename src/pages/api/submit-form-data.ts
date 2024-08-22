@@ -25,7 +25,9 @@ export default async function handler(
     }
 
     const auth = new google.auth.GoogleAuth({
-      keyFilename: "./src/aken-medical-8d564d7bea9d.json",
+      credentials: JSON.parse(
+        process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON || "{}",
+      ),
       scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
@@ -33,7 +35,6 @@ export default async function handler(
     const sheets = google.sheets({ version: "v4", auth });
 
     const valueInputOption = "USER_ENTERED";
-
 
     sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
