@@ -5,30 +5,36 @@ import {
   ExclamationCircleIcon,
   EnvelopeIcon,
   UserIcon,
-  PhoneIcon,
   ChatBubbleLeftEllipsisIcon,
+  CheckCircleIcon,
+  PaperAirplaneIcon,
+  ArrowRightCircleIcon,
 } from "@heroicons/react/20/solid";
 
 export type ContactFormData = {
-  formId: string;
+  formName: string;
   name: string;
   email: string;
-  tel: string;
   msg: string;
 };
 
 export const ContactForm = () => {
-  const { register, handleSubmit, reset } = useForm<ContactFormData>({
+  const {
+    handleSubmit,
+    reset,
+    register,
+    formState: { errors, isSubmitting, isSubmitSuccessful },
+  } = useForm<ContactFormData>({
     defaultValues: {
-      formId: "",
+      formName: "Contact Form",
       name: "",
       email: "",
       msg: "",
-      tel: "",
     },
   });
 
   const onSubmit: SubmitHandler<ContactFormData> = async (contactFormData) => {
+    console.log(contactFormData);
     try {
       const response = await fetch("/api/submit-form-data", {
         method: "POST",
@@ -54,113 +60,157 @@ export const ContactForm = () => {
   };
 
   return (
-    <div className="flex max-w-7xl flex-col items-center px-4 py-20 sm:px-6 lg:px-8">
+    <div className="flex max-w-7xl flex-col items-center py-20 sm:mx-auto sm:px-6 lg:px-8">
       <form
-        className="flex w-full max-w-96 flex-col gap-3 items-center rounded-3xl bg-white/30 p-5 shadow-2xl backdrop-blur-lg"
+        className="flex w-full flex-col items-center gap-3 bg-white/30 p-5 sm:min-w-96 sm:rounded-3xl sm:shadow-2xl sm:backdrop-blur-lg"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h1 className="text-center text-lg font-bold text-blue-950">
-          This is a nice form
-        </h1>
+        <h2 className="text-center text-lg font-bold text-blue-950">
+          Contact us
+        </h2>
 
-        <input type="hidden" {...register("formId")} />
+        <div className="flex w-full flex-col gap-4">
+          <input type="hidden" {...register("formName")} />
 
-        <Control
-          {...register("name")}
-          label="Name"
-          type="text"
-          placeholder="Your full name"
-          errorMessage=""
-          PrefixIcon={UserIcon}
-        />
-        <Control
-          {...register("email")}
-          label="Email"
-          type="email"
-          placeholder="Your best email address"
-          errorMessage=""
-          PrefixIcon={EnvelopeIcon}
-        />
-        <Control
-          {...register("tel")}
-          label="Phone number"
-          type="tel"
-          placeholder="Your phone number"
-          errorMessage=""
-          PrefixIcon={PhoneIcon}
-        />
+          <div className="flex flex-col">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium leading-6 text-blue-950"
+            >
+              Name
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <UserIcon
+                  aria-hidden="true"
+                  className="h-5 w-5 text-blue-950/30"
+                />
+              </div>
+              <input
+                id="name"
+                placeholder="What is your name?"
+                autoComplete="name"
+                {...register("name", { required: "Name is required" })}
+                type="text"
+                className="block w-full rounded-full border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+              />
+              {!!errors.name && (
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                  <ExclamationCircleIcon
+                    aria-hidden="true"
+                    className="h-5 w-5 text-red-500"
+                  />
+                </div>
+              )}
+            </div>
+            {!!errors.name && (
+              <p id="name-error" className="mt-2 text-sm text-red-600">
+                {errors.name?.message}
+              </p>
+            )}
+          </div>
 
-        <Control
-          {...register("tel")}
-          label="Message"
-          placeholder="How can we help you?"
-          errorMessage=""
-          PrefixIcon={ChatBubbleLeftEllipsisIcon}
-        />
+          <div className="flex flex-col">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium leading-6 text-blue-950"
+            >
+              Email
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <EnvelopeIcon
+                  aria-hidden="true"
+                  className="h-5 w-5 text-blue-950/30"
+                />
+              </div>
+              <input
+                id="email"
+                autoComplete="email"
+                placeholder="What is your best email?"
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                })}
+                type="email"
+                className="block w-full rounded-full border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+              />
+              {!!errors.email && (
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                  <ExclamationCircleIcon
+                    aria-hidden="true"
+                    className="h-5 w-5 text-red-500"
+                  />
+                </div>
+              )}
+            </div>
+            {!!errors.email && (
+              <p id="email-error" className="mt-2 text-sm text-red-600">
+                {errors.email?.message}
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col">
+            <label
+              htmlFor="msg"
+              className="block text-sm font-medium leading-6 text-blue-950"
+            >
+              Message
+            </label>
+            <div className="relative mt-2 rounded-md shadow-sm">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex pl-3 pt-2">
+                <ChatBubbleLeftEllipsisIcon
+                  aria-hidden="true"
+                  className="h-5 w-5 text-blue-950/30"
+                />
+              </div>
+              <textarea
+                id="msg"
+                placeholder="Tell us how we can help you"
+                rows={4}
+                {...register("msg", { required: "Message is required" })}
+                className="block w-full rounded-xl border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+              />
+              {!!errors.msg && (
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex pr-3 pt-2">
+                  <ExclamationCircleIcon
+                    aria-hidden="true"
+                    className="h-5 w-5 text-red-500"
+                  />
+                </div>
+              )}
+            </div>
+            {!!errors.msg && (
+              <p id="msg-error" className="mt-2 text-sm text-red-600">
+                {errors.msg?.message}
+              </p>
+            )}
+          </div>
+        </div>
 
         <button
-          className="mt-5 w-full rounded-full bg-blue-950 py-4 font-semibold text-blue-50 shadow-xl"
+          className="mt-5 flex w-full items-center justify-center gap-1 rounded-full bg-blue-950 py-4 font-semibold text-blue-50 shadow-xl"
           type="submit"
         >
-          Submit
+          {isSubmitting ? (
+            <>
+              <PaperAirplaneIcon className="h-5 w-5 text-orange-500" />
+              <span>Sending...</span>
+            </>
+          ) : isSubmitSuccessful ? (
+            <>
+              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <span>Sent with success</span>
+            </>
+          ) : (
+            <>
+              <ArrowRightCircleIcon className="h-5 w-5 text-white" />
+              <span>Send</span>
+            </>
+          )}
         </button>
       </form>
     </div>
   );
 };
-
-const Control = (props) => (
-  <div className="w-full">
-    <label
-      htmlFor="email"
-      className="block text-sm font-medium leading-6 text-blue-950"
-    >
-      {props.label}
-    </label>
-    <div className="relative mt-2 rounded-md shadow-sm">
-      {props.type ? (
-        <>
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-            <props.PrefixIcon
-              aria-hidden="true"
-              className="h-5 w-5 text-blue-950/50"
-            />
-          </div>
-          <input
-            {...props}
-            className="block w-full rounded-full border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
-          />
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-            <ExclamationCircleIcon
-              aria-hidden="true"
-              className="h-5 w-5 text-red-500"
-            />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="pointer-events-none absolute inset-y-0 left-0 flex items-start pl-3 pt-2">
-            <props.PrefixIcon
-              aria-hidden="true"
-              className="h-5 w-5 text-blue-950/50"
-            />
-          </div>
-          <textarea
-            rows={5}
-            {...props}
-            className="block w-full rounded-xl border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-950 sm:text-sm sm:leading-6"
-          />
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-start pr-3 pt-2">
-            <ExclamationCircleIcon
-              aria-hidden="true"
-              className="h-5 w-5 text-red-500"
-            />
-          </div>
-        </>
-      )}
-    </div>
-    <p id="email-error" className="mt-2 text-sm text-red-600">
-      {props.errorMessage}
-    </p>
-  </div>
-);

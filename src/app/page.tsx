@@ -1,4 +1,4 @@
-import { ContactForm } from "@/components";
+import { ContactForm, Countdown } from "@/components";
 
 const data = {
   tag: "Revolution in Cancer Treatment",
@@ -23,6 +23,7 @@ export default function Home() {
   return (
     <FlexWrapperWithGradientBG>
         <ContactForm />
+        {/* <Countdown/> */}
     </FlexWrapperWithGradientBG>
   );
 }
