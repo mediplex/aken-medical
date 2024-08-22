@@ -1,5 +1,5 @@
 "use client";
 
-const Nav = () => {
+export const Nav = () => {
   return (<></>)
 }
