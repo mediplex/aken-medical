@@ -36,7 +36,7 @@ export default async function handler(
 
     const valueInputOption = "USER_ENTERED";
 
-    sheets.spreadsheets.values.append({
+    const x = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
       valueInputOption,
       range: process.env.RANGE,
@@ -44,6 +44,8 @@ export default async function handler(
         values: [[Date.now(), data.formName, data.name, data.email, data.msg]],
       },
     });
+
+    console.log(x.data)
 
     res.status(200).json({ message: "Data written successfully" });
   } catch (error) {
