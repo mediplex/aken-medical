@@ -1,6 +1,11 @@
-import { ContactForm, Countdown } from "@/components";
+import { Hero } from "@/components";
 
-const data = {
+const data: {
+  tag: string;
+  title: string;
+  content: string;
+  benefits: string[];
+} = {
   tag: "Revolution in Cancer Treatment",
   title: "Nanoparticle-based Radiopharmaceutical",
   content:
@@ -11,19 +16,12 @@ const data = {
     "Enhanced targetting using a multi-vector approach",
     "Seamless theranostics",
   ],
-  navigation: [
-    { name: "Our Innovation", href: "#" },
-    { name: "Pipeline", href: "#" },
-    { name: "Our Team", href: "#" },
-    { name: "Company", href: "#" },
-  ],
 };
 
 export default function Home() {
   return (
     <FlexWrapperWithGradientBG>
-        <ContactForm />
-        {/* <Countdown/> */}
+      <Hero tag={data.tag} title={data.title} content={data.content} />
     </FlexWrapperWithGradientBG>
   );
 }
@@ -65,5 +63,3 @@ const FlexWrapperWithGradientBG = ({
     </>
   );
 };
-
-
