@@ -12,7 +12,7 @@ export const Hero = ({
   content: string;
 }) => {
   return (
-    <div className="flex max-w-7xl flex-col py-20 sm:mx-auto sm:px-6 lg:px-8">
+    <div className="flex max-w-7xl flex-col pt-20 sm:mx-auto sm:px-6 lg:px-8">
       <div className="flex max-w-3xl flex-col items-center gap-4 px-4 py-10 text-center sm:min-w-96">
         <div className="relative rounded-lg bg-blue-950 px-3 text-sm leading-8 text-white">
           {tag}

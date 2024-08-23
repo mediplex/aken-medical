@@ -1,32 +1,34 @@
 import { ArrowRightCircleIcon } from "@heroicons/react/24/outline";
 import Image, { StaticImageData } from "next/image";
 
-export const PartnersSection = ({partners}: {partners:{imgSrc: StaticImageData; alt: string }[]}) => {
+export const PartnersSection = ({
+  partners,
+}: {
+  partners: { imgSrc: StaticImageData; alt: string }[];
+}) => {
   return (
     <div className="flex max-w-7xl flex-col items-center py-10 sm:mx-auto sm:px-6 lg:px-8">
       <div className="flex w-full items-center gap-3 bg-white/30 p-5 sm:min-w-96 sm:rounded-3xl sm:shadow-2xl sm:backdrop-blur-lg">
-        <div className="flex w-full flex-col gap-4 p-10">
-          <h2 className="pb-10 text-center text-xl font-bold tracking-tight text-blue-950 sm:text-4xl">
-           Our ecosystem to build and ship our nanoparticles
+        <div className="flex w-full flex-col items-center gap-4 sm:p-10">
+          <h2 className="w-2/3 text-wrap pb-10 text-center text-xl font-bold tracking-tight text-blue-950 sm:text-4xl">
+            Our ecosystem to build and ship our nanoparticles
           </h2>
 
           <div className="flex flex-col gap-x-16 lg:flex-row">
-            <div className="flex w-full flex-col gap-2 lg:w-1/2">
-              <p>
+            <div className="flex w-full flex-col gap-2 leading-relaxed lg:w-2/5">
+              <p className=" bg-blue-500 bg-clip-text first-letter:text-xl first-letter:font-extrabold first-letter:text-transparent">
                 Aken has partnered with top universities, research centers, and
                 cancer institutes in Europe.
               </p>
-              <p>
+              <p className=" bg-blue-500 bg-clip-text first-letter:text-xl first-letter:font-extrabold first-letter:text-transparent">
                 These collaborations are crucial in advancing our research and
                 development efforts.
               </p>
-              <p>
-                Moreover, Aken has built strong connections with industry
-                leaders throughout the development journey. This ensures quality
-                in materials, manufacturing, studies, logistics, and patient
-                delivery.
+              <p className=" bg-blue-500 bg-clip-text first-letter:text-xl first-letter:font-extrabold first-letter:text-transparent">
+                This ensures quality in materials, manufacturing, studies,
+                logistics, and patient delivery.
               </p>
-              <p>
+              <p className=" bg-blue-500 bg-clip-text first-letter:text-xl first-letter:font-extrabold first-letter:text-transparent">
                 Additionally, the vibrant European biotech ecosystem supports
                 our efforts. It enhances our capacity to market innovative
                 treatments.
@@ -40,15 +42,18 @@ export const PartnersSection = ({partners}: {partners:{imgSrc: StaticImageData; 
               </a>
             </div>
 
-            <div className="flex w-full flex-wrap lg:w-1/2">
+            <div className="flex w-full flex-row flex-wrap items-start justify-center lg:w-3/5">
               {partners.map((p, i) => (
-                <div key={i} className="h-20 w-1/3 flex justify=center items-center md:w-1/4">
+                <div
+                  key={i}
+                  className="flex h-20 w-1/3 items-center justify-center md:w-1/4"
+                >
                   <Image
                     className="has-transition"
                     src={p.imgSrc}
                     alt={p.alt}
-                    height={72}
-                    width={128}
+                    height={80}
+                    width={154}
                   />
                 </div>
               ))}
