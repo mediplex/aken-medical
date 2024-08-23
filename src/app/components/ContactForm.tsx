@@ -37,7 +37,6 @@ export const ContactForm = () => {
   });
 
   const onSubmit: SubmitHandler<ContactFormData> = async (contactFormData) => {
-    console.log(contactFormData);
     try {
       const response = await fetch("/api/submit-form-data", {
         method: "POST",
@@ -52,9 +51,9 @@ export const ContactForm = () => {
 
         const timeOutId = setTimeout(() => {
           reset();
-        }, 5000);
+        }, 2000);
 
-        // clearTimeout(timeoutId);
+        // clearTimeout(timeOutId);
       } else {
         console.error("Error submitting data");
       }

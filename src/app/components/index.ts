@@ -1,6 +1,6 @@
 export * from "./Hero";
 export * from "./Nav";
-export * from "./LogoClouds";
+export * from "./PartnersSection";
 export * from "./Footer"
 export * from './ModalForm'
 export * from './Team'

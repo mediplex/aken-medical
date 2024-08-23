@@ -1,10 +1,26 @@
-import { Hero } from "@/components";
+import { Hero, PartnersSection } from "@/components";
+
+import { StaticImageData } from "next/image";
+
+
+
+import wilco from '../../public/images/wilco-logo.webp';
+import bpiFrance from "../../public/images/bpi-france-logo.webp";
+import cnrs from "../../public/images/cnrs-logo.webp";
+import eckertAndZiegler from "../../public/images/eckert-and-ziegler-logo.webp";
+import icm from "../../public/images/icm-logo.webp";
+import inserm from "../../public/images/inserm-logo.webp";
+import pantera from "../../public/images/pantera-logo.webp";
+import reseauEntreprendre from "../../public/images/reseau-entreprendre-logo.webp";
+import siric from "../../public/images/siric-logo.webp";
+import universiteDeMontpellier from "../../public/images/universite-de-montpellier-logo.webp";
 
 const data: {
   tag: string;
   title: string;
   content: string;
   benefits: string[];
+  partners: { imgSrc: StaticImageData; alt: string }[];
 } = {
   tag: "Revolution in Cancer Treatment",
   title: "Nanoparticle-based Radiopharmaceutical",
@@ -16,12 +32,25 @@ const data: {
     "Enhanced targetting using a multi-vector approach",
     "Seamless theranostics",
   ],
+  partners: [
+    { imgSrc: wilco, alt: "Wilco Logo" },
+    { imgSrc: bpiFrance, alt: "Bpi France Logo" },
+    { imgSrc: cnrs, alt: "CNRS Logo" },
+    { imgSrc: eckertAndZiegler, alt: "Eckert & Ziegler Logo" },
+    { imgSrc: icm, alt: "ICM Logo" },
+    { imgSrc: inserm, alt: "INSERM Logo" },
+    { imgSrc: pantera, alt: "Pantera Logo" },
+    { imgSrc: reseauEntreprendre, alt: "Reseau Entreprendre Logo" },
+    { imgSrc: siric, alt: "SIRIC Logo" },
+    { imgSrc: universiteDeMontpellier, alt: "Universite de Montpellier Logo" },
+  ],
 };
 
 export default function Home() {
   return (
     <FlexWrapperWithGradientBG>
       <Hero tag={data.tag} title={data.title} content={data.content} />
+      <PartnersSection partners={data.partners}/>
     </FlexWrapperWithGradientBG>
   );
 }
