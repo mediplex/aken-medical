@@ -88,7 +88,7 @@ export const ContactForm = () => {
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <UserIcon
                   aria-hidden="true"
-                  className="h-5 w-5 text-blue-950/30"
+                  className="size-5 text-blue-950/30"
                 />
               </div>
               <input
@@ -103,7 +103,7 @@ export const ContactForm = () => {
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                   <ExclamationCircleIcon
                     aria-hidden="true"
-                    className="h-5 w-5 text-red-500"
+                    className="size-5 text-red-500"
                   />
                 </div>
               )}
@@ -126,7 +126,7 @@ export const ContactForm = () => {
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <EnvelopeIcon
                   aria-hidden="true"
-                  className="h-5 w-5 text-blue-950/30"
+                  className="size-5 text-blue-950/30"
                 />
               </div>
               <input
@@ -144,7 +144,7 @@ export const ContactForm = () => {
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                   <ExclamationCircleIcon
                     aria-hidden="true"
-                    className="h-5 w-5 text-red-500"
+                    className="size-5 text-red-500"
                   />
                 </div>
               )}
@@ -167,7 +167,7 @@ export const ContactForm = () => {
               <div className="pointer-events-none absolute inset-y-0 left-0 flex pl-3 pt-2">
                 <ChatBubbleLeftEllipsisIcon
                   aria-hidden="true"
-                  className="h-5 w-5 text-blue-950/30"
+                  className="size-5 text-blue-950/30"
                 />
               </div>
               <textarea
@@ -181,7 +181,7 @@ export const ContactForm = () => {
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex pr-3 pt-2">
                   <ExclamationCircleIcon
                     aria-hidden="true"
-                    className="h-5 w-5 text-red-500"
+                    className="size-5 text-red-500"
                   />
                 </div>
               )}
@@ -201,18 +201,18 @@ export const ContactForm = () => {
           {
             isSubmitting ? (
             <>
-              <PaperAirplaneIcon className="h-5 w-5 text-orange-500" />
+              <PaperAirplaneIcon className="size-5 text-orange-500" />
               <span>Sending...</span>
             </>
           ) : 
           isSubmitSuccessful ? (
             <>
-              <CheckCircleIcon className="h-5 w-5 text-green-500" />
+              <CheckCircleIcon className="size-5 text-green-500" />
               <span>Sent with success</span>
             </>
           ) : (
             <>
-              <ArrowRightCircleIcon className="h-5 w-5 text-white" />
+              <ArrowRightCircleIcon className="size-5 text-white" />
               <span>Send</span>
             </>
           )}

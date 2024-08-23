@@ -1,4 +1,4 @@
-import { Hero, ContactForm } from "@/components";
+import { Hero } from "@/components";
 
 const data: {
   tag: string;
@@ -21,8 +21,7 @@ const data: {
 export default function Home() {
   return (
     <FlexWrapperWithGradientBG>
-      {/* <Hero tag={data.tag} title={data.title} content={data.content} /> */}
-      <ContactForm />
+      <Hero tag={data.tag} title={data.title} content={data.content} />
     </FlexWrapperWithGradientBG>
   );
 }
