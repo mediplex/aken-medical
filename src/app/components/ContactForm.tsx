@@ -23,7 +23,7 @@ export const ContactForm = () => {
     handleSubmit,
     reset,
     register,
-    formState: { errors, isSubmitting, isSubmitSuccessful,},
+    formState: { errors, isSubmitting, isSubmitSuccessful },
   } = useForm<ContactFormData>({
     defaultValues: {
       formName: "Contact Form",
@@ -31,9 +31,9 @@ export const ContactForm = () => {
       email: "",
       msg: "",
     },
-    resetOptions:{
-      keepIsSubmitted: false
-    }
+    resetOptions: {
+      keepIsSubmitted: false,
+    },
   });
 
   const onSubmit: SubmitHandler<ContactFormData> = async (contactFormData) => {
@@ -69,21 +69,21 @@ export const ContactForm = () => {
         className="flex w-full flex-col items-center gap-3 bg-white/30 p-5 sm:min-w-96 sm:rounded-3xl sm:shadow-2xl sm:backdrop-blur-lg"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <h2 className="text-center text-lg font-bold text-blue-950">
+        <h2 className="bg-gradient-to-r from-sky-500 to-violet-500 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent">
           Contact us
         </h2>
 
         <div className="flex w-full flex-col gap-4">
           <input type="hidden" {...register("formName")} />
 
-          <div className="flex flex-col">
+          <div className="flex flex-col items-start">
             <label
               htmlFor="name"
               className="block text-sm font-medium leading-6 text-blue-950"
             >
               Name
             </label>
-            <div className="relative mt-2 rounded-md shadow-sm">
+            <div className="relative mt-2 w-full rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <UserIcon
                   aria-hidden="true"
@@ -114,14 +114,14 @@ export const ContactForm = () => {
             )}
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col items-start">
             <label
               htmlFor="email"
               className="block text-sm font-medium leading-6 text-blue-950"
             >
               Email
             </label>
-            <div className="relative mt-2 rounded-md shadow-sm">
+            <div className="relative mt-2 w-full rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <EnvelopeIcon
                   aria-hidden="true"
@@ -155,14 +155,14 @@ export const ContactForm = () => {
             )}
           </div>
 
-          <div className="flex flex-col">
+          <div className="flex flex-col items-start">
             <label
               htmlFor="msg"
               className="block text-sm font-medium leading-6 text-blue-950"
             >
               Message
             </label>
-            <div className="relative mt-2 rounded-md shadow-sm">
+            <div className="relative mt-2 w-full rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex pl-3 pt-2">
                 <ChatBubbleLeftEllipsisIcon
                   aria-hidden="true"
@@ -197,14 +197,12 @@ export const ContactForm = () => {
           className="mt-5 flex w-full items-center justify-center gap-1 rounded-full bg-blue-950 py-4 font-semibold text-blue-50 shadow-xl"
           type="submit"
         >
-          {
-            isSubmitting ? (
+          {isSubmitting ? (
             <>
               <PaperAirplaneIcon className="size-5 text-orange-500" />
               <span>Sending...</span>
             </>
-          ) : 
-          isSubmitSuccessful ? (
+          ) : isSubmitSuccessful ? (
             <>
               <CheckCircleIcon className="size-5 text-green-500" />
               <span>Sent with success</span>

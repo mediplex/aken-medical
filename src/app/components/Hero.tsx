@@ -14,10 +14,13 @@ export const Hero = ({
   return (
     <div className="flex max-w-7xl flex-col pt-20 sm:mx-auto sm:px-6 lg:px-8">
       <div className="flex max-w-3xl flex-col items-center gap-4 px-4 py-10 text-center sm:min-w-96">
-        <div className="relative rounded-lg bg-blue-950 px-3 text-sm leading-8 text-white">
+        {/* <div className="relative rounded-lg bg-blue-950 px-3 text-sm leading-8 text-white">
+          {tag}
+        </div> */}
+        <div className="relative  bg-blue-950 rounded-md  px-3 text-sm leading-8 text-white">
           {tag}
         </div>
-        <h1 className="text-3xl font-bold tracking-tight text-blue-950 sm:text-5xl">
+        <h1 className="text-3xl font-bold tracking-tight text-blue-950 sm:text-6xl">
           {title}
         </h1>
         <p className="text-pretty text-lg leading-8 text-blue-900">{content}</p>

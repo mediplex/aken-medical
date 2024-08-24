@@ -4,5 +4,5 @@ export * from "./PartnersSection";
 export * from "./Footer"
 export * from './ModalForm'
 export * from './Team'
-export * from './Countdown'
+export * from './Why'
 export * from './ContactForm'
