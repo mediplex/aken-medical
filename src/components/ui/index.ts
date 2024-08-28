@@ -1,2 +1,2 @@
-export * from './typewriter'
-export * from './icons'
+export * from './typewriter';
+export * from './icons';

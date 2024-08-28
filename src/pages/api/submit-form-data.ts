@@ -1,14 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { google } from "googleapis";
-import { ContactFormData } from "@/components";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { google } from 'googleapis';
+import type { ContactFormData } from '../../components/ContactForm';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse,
-) {
-  if (req.method !== "POST") {
+  res: NextApiResponse
+): Promise<void> {
+  if (req.method !== 'POST') {
     return res.status(405).json({
-      message: "Only POST requests allowed",
+      message: 'Only POST requests allowed',
     });
   }
 
@@ -19,22 +19,22 @@ export default async function handler(
     const errors = validateFormData(data);
     if (errors.length > 0) {
       return res.status(400).json({
-        message: "Invalid form data",
+        message: 'Invalid form data',
         errors,
       });
     }
 
     const auth = new google.auth.GoogleAuth({
       credentials: JSON.parse(
-        process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON || "{}",
+        process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON || '{}'
       ),
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
 
     await auth.getClient();
-    const sheets = google.sheets({ version: "v4", auth });
+    const sheets = google.sheets({ version: 'v4', auth });
 
-    const valueInputOption = "USER_ENTERED";
+    const valueInputOption = 'USER_ENTERED';
 
     const x = await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.SPREADSHEET_ID,
@@ -45,12 +45,12 @@ export default async function handler(
       },
     });
 
-    console.log(x.data)
+    console.log(x.data);
 
-    res.status(200).json({ message: "Data written successfully" });
+    res.status(200).json({ message: 'Data written successfully' });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Error writing to spreadsheet" });
+    res.status(500).json({ message: 'Error writing to spreadsheet' });
   }
 }
 
@@ -59,13 +59,13 @@ function validateFormData(data: ContactFormData): string[] {
 
   // Add your validation rules here
   if (!data.name) {
-    errors.push("Name is required");
+    errors.push('Name is required');
   }
   if (!data.email || !isValidEmail(data.email)) {
-    errors.push("Invalid email address");
+    errors.push('Invalid email address');
   }
   if (!data.msg) {
-    errors.push("Message is required");
+    errors.push('Message is required');
   }
 
   return errors;

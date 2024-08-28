@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
 interface TypewriterProps {
   text: string;
@@ -8,7 +8,7 @@ interface TypewriterProps {
 }
 
 export const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 70 }) => {
-  const [currentText, setCurrentText] = useState("");
+  const [currentText, setCurrentText] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -18,15 +18,13 @@ export const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 70 }) => {
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }, delay);
 
-      return () => clearTimeout(timeout);
+      return (): void => clearTimeout(timeout);
     }
   }, [currentIndex, delay, text]);
 
   return (
     <>
-    <noscript>
-      {text}
-    </noscript>
+      <noscript>{text}</noscript>
       {currentText}
       {currentIndex != text.length && (
         <span className="animate-ping font-light">|</span>
