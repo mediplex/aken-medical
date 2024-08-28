@@ -1,5 +1,4 @@
-import { CheckCircleIcon } from "./ui";
-
+import { ArrowRightCircleIcon, CheckCircleIcon } from "./ui";
 
 export const Why = ({
   benefits,
@@ -12,7 +11,6 @@ export const Why = ({
     <div className="flex max-w-7xl flex-col items-center py-10 sm:mx-auto sm:px-6 lg:px-8">
       <div className="flex w-full items-center gap-3 bg-white/30 p-5 sm:min-w-96 sm:rounded-3xl sm:shadow-2xl sm:backdrop-blur-lg">
         <div className="flex w-full flex-col items-center gap-4 sm:p-10">
-
           <h2 className="w-2/3 text-wrap pb-10 text-center text-xl font-bold tracking-tight text-blue-950 sm:text-4xl">
             Our ecosystem to build and ship our nanoparticles
           </h2>
@@ -24,10 +22,7 @@ export const Why = ({
 
             <div className="flex w-full flex-col items-start justify-stretch lg:w-3/5">
               {benefits.map((b, i: number) => (
-                <div
-                  key={i}
-                  className="flex items-center py-1 md:py-4"
-                >
+                <div key={i} className="flex items-center py-1 md:py-4">
                   <div className="mr-3 flex-shrink-0">
                     {
                       <CheckCircleIcon

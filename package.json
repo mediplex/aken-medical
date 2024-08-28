@@ -10,6 +10,15 @@
     "prepare": "husky install",
     "test": "echo 'Trust me no need for tests 😎'"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{css,scss,md}": [
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@tsparticles/engine": "^3.5.0",
     "@tsparticles/react": "^3.0.0",
