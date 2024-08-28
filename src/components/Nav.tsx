@@ -1,4 +1,4 @@
-import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
+// import { ExclamationCircleIcon } from "@heroicons/react/24/outline";
 import Image, { StaticImageData } from "next/image";
 
 export const Nav = ({ imgSrc, alt }: { imgSrc: StaticImageData, alt: string }) => {
@@ -12,7 +12,7 @@ export const Nav = ({ imgSrc, alt }: { imgSrc: StaticImageData, alt: string }) =
           height={48}
           width={115.5}
         /> */}
-          <ExclamationCircleIcon className="size-12 text-yellow-500"/>
+          {/* <ExclamationCircleIcon className="size-12 text-yellow-500"/> */}
           <p className="text-yellow-500 font-bold text-xl">Website Under Construction</p>
 
 

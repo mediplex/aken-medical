@@ -1,15 +1,8 @@
 "use client";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { UserIcon, ExclamationCircleIcon, EnvelopeIcon, ChatBubbleLeftEllipsisIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowRightCircleIcon } from "./ui";
 
-import {
-  ExclamationCircleIcon,
-  EnvelopeIcon,
-  UserIcon,
-  ChatBubbleLeftEllipsisIcon,
-  CheckCircleIcon,
-  PaperAirplaneIcon,
-  ArrowRightCircleIcon,
-} from "@heroicons/react/20/solid";
+
 
 export type ContactFormData = {
   formName: string;
@@ -87,7 +80,7 @@ export const ContactForm = () => {
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <UserIcon
                   aria-hidden="true"
-                  className="size-5 text-blue-950/30"
+                  className="size-6 fill-none stroke-blue-950/30"
                 />
               </div>
               <input
@@ -102,13 +95,13 @@ export const ContactForm = () => {
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                   <ExclamationCircleIcon
                     aria-hidden="true"
-                    className="size-5 text-red-500"
+                    className="size-6 fill-red-500 "
                   />
                 </div>
               )}
             </div>
             {!!errors.name && (
-              <p id="name-error" className="mt-2 text-sm text-red-600">
+              <p id="name-error" className="mt-2 text-sm text-red-500">
                 {errors.name?.message}
               </p>
             )}
@@ -122,10 +115,10 @@ export const ContactForm = () => {
               Email
             </label>
             <div className="relative mt-2 w-full rounded-md shadow-sm">
-              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center justify-center pl-3 ">
                 <EnvelopeIcon
                   aria-hidden="true"
-                  className="size-5 text-blue-950/30"
+                  className="size-5 fill-none stroke-blue-950/30"
                 />
               </div>
               <input
@@ -143,7 +136,7 @@ export const ContactForm = () => {
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                   <ExclamationCircleIcon
                     aria-hidden="true"
-                    className="size-5 text-red-500"
+                    className="size-6 fill-red-500 "
                   />
                 </div>
               )}
@@ -166,7 +159,7 @@ export const ContactForm = () => {
               <div className="pointer-events-none absolute inset-y-0 left-0 flex pl-3 pt-2">
                 <ChatBubbleLeftEllipsisIcon
                   aria-hidden="true"
-                  className="size-5 text-blue-950/30"
+                  className="size-6 fill-none stroke-blue-950/30"
                 />
               </div>
               <textarea
@@ -180,7 +173,7 @@ export const ContactForm = () => {
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex pr-3 pt-2">
                   <ExclamationCircleIcon
                     aria-hidden="true"
-                    className="size-5 text-red-500"
+                    className="size-6 fill-red-500 "
                   />
                 </div>
               )}
@@ -199,17 +192,17 @@ export const ContactForm = () => {
         >
           {isSubmitting ? (
             <>
-              <PaperAirplaneIcon className="size-5 text-orange-500" />
+              <PaperAirplaneIcon className="size-6 fill-orange-500  stroke-blue-950" />
               <span>Sending...</span>
             </>
           ) : isSubmitSuccessful ? (
             <>
-              <CheckCircleIcon className="size-5 text-green-500" />
+              <CheckCircleIcon className="size-6 fill-green-500  stroke-blue-950" />
               <span>Sent with success</span>
             </>
           ) : (
             <>
-              <ArrowRightCircleIcon className="size-5 text-white" />
+              <ArrowRightCircleIcon className="size-6 fill-white stroke-blue-950" />
               <span>Send</span>
             </>
           )}

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import akenMedicalLogo from "../../../public/images/aken-medical-logo-negative.webp";
+import akenMedicalLogo from "../../public/images/aken-medical-logo-negative.webp";
 
 export const Footer = () => {
   return (
