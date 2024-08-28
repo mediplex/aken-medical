@@ -10,7 +10,7 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => (
       {tag}
     </div>
 
-    <h1 className="max-w-3xl text-pretty text-center text-3xl font-bold leading-8 tracking-tight text-blue-950 backdrop-blur-sm xs:text-4xl sm:text-6xl">
+    <h1 className="max-w-3xl text-pretty text-center text-3xl font-bold leading-8 tracking-tight text-blue-950 backdrop-blur-sm [height:64px] xs:text-4xl xs:[height:80px] sm:text-6xl sm:[height:120px]">
       <Typewriter text={title} delay={100} />
     </h1>
 
