@@ -25,6 +25,22 @@ const config: Config = {
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
+    extend: {
+      keyframes: {
+        typing: {
+          '0%': { width: '0' },
+          '100%': { width: '100%' },
+        },
+        'blink-caret': {
+          '0%, 100%': { 'border-color': 'transparent' },
+          '50%': { 'border-color': 'black' },
+        },
+      },
+      animation: {
+        typing:
+          'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+      },
+    },
   },
   plugins: [tailwindCssForm],
 };

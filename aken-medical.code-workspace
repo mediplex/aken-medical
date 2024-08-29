@@ -10,18 +10,25 @@
     "prettier.requireConfig": true,
     "typescript.suggest.paths": false,
     "javascript.suggest.paths": false,
-    "tsimporter.filesToScan": [
-      "**/*.ts",
-      "**/*.tsx",
-    ],
-    
-  //     "files.exclude": {
-  //         "**/node_modules": true,
-  //          "**/.git": true,
-  //          "**/.next":true,
-  //          "**/.husky":true,
-  //          "**/.": true
-  // }
+    "tsimporter.filesToScan": ["**/*.ts", "**/*.tsx"],
+    "files.associations": {
+      "*.css": "tailwindcss",
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "notebook.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.quickSuggestions": {
+      "comments": "on",
+    },
+    "editor.linkedEditing": true
+
+    //     "files.exclude": {
+    //         "**/node_modules": true,
+    //          "**/.git": true,
+    //          "**/.next":true,
+    //          "**/.husky":true,
+    //          "**/.": true
+    // }
   },
   "extensions": {
     "recommendations": [
@@ -35,7 +42,6 @@
       "PKief.material-icon-theme",
       "esbenp.prettier-vscode",
       "christian-kohler.path-intellisense",
-
-    ]
+    ],
   }
 }

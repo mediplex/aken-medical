@@ -1,7 +1,7 @@
 import type { FC } from 'react';
 import type { StaticImageData } from 'next/image';
 import { Hero, Footer, Why, PartnersSection } from '@/components';
-import { SparklesCore } from '@/components/ui/sparkles';
+// import { SparklesCore } from '@/components/ui/sparkles';
 
 // Import images
 import wilco from '../../public/images/wilco-logo.webp';
@@ -90,19 +90,21 @@ const Home: FC = () => {
         <Why {...data.why} />
         <Footer />
       </main>
-      <div className="absolute inset-0 h-screen w-full bg-gradient-to-b from-white to-white">
-        <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={2}
-          particleDensity={20}
-          className="z-50 h-full w-full"
-          particleColor="#000"
-        />
-      </div>
+      <div className="absolute inset-0 h-screen w-full bg-gradient-to-b from-white to-white"></div>
     </>
   );
 };
 
 export default Home;
+
+{
+  /* <SparklesCore
+id="tsparticlesfullpage"
+background="transparent"
+minSize={0.6}
+maxSize={2}
+particleDensity={20}
+className="z-50 h-full w-full"
+particleColor="#000"
+/> */
+}
