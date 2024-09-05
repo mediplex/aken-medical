@@ -1,7 +1,16 @@
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import { BeakerIcon, CurrencyDollarIcon, TruckIcon } from './ui';
-import type { PartnersSectionData } from '../app/page';
+
+export interface Partner {
+  imgSrc: StaticImageData;
+  alt: string;
+}
+
+export interface PartnersSectionData {
+  partners: Partner[];
+  headline: string;
+}
 
 export const PartnersSection: React.FC<PartnersSectionData> = ({
   headline,

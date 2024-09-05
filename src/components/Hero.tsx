@@ -1,42 +1,55 @@
 'use client';
-import { Typewriter } from './ui';
-import type { HeroData } from '../app/page';
 
-export const Hero: React.FC<HeroData> = ({ tag, title, content }) => (
-  <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-1 p-4">
-    {/* <Nanoparticle className="size-36 my-10" /> */}
+import { Modal, Typewriter } from '@/components';
+import { useAppContext } from '@/contexts';
 
-    <div className="relative rounded-md bg-blue-950/5 px-3 text-center text-sm leading-8 text-blue-950/80 backdrop-blur-sm">
-      {tag}
-    </div>
+export interface HeroData {
+  tag: string;
+  title: string;
+  content: string;
+}
 
-    <h1 className="w-screen text-pretty text-center text-3xl font-bold leading-8 tracking-tight text-blue-950 backdrop-blur-sm [height:64px] xs:text-4xl xs:[height:80px] sm:text-6xl sm:[height:128px] md:max-w-3xl">
-      <Typewriter text={title} delay={100} />
-    </h1>
+export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
+  const { state, dispatch } = useAppContext();
 
-    <p className="max-w-lg text-pretty text-center text-lg leading-8 text-blue-950/50 backdrop-blur-sm">
-      {content}
-    </p>
+  return (
+    <>
+      <Modal showModal={state.isOpen} />
+      <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-1 p-4">
+        <div className="relative rounded-md bg-blue-950/5 px-3 text-center text-sm leading-8 text-blue-950/80 backdrop-blur-sm">
+          {tag}
+        </div>
 
-    <div className="my-10 flex w-full max-w-md flex-col items-center justify-center rounded-md bg-white/5 px-4 py-8 backdrop-blur-sm first:mt-0 last:mb-0">
-      <h2 className="my-5 font-bold first:mt-0 last:mb-0">
-        Do you want to lean more?
-      </h2>
-      <button
-        className="motion-reduced:animate-bounce h-16 w-full rounded-full bg-gradient-to-r from-blue-500 to-violet-500 font-bold text-white shadow-xl sm:w-96"
-        value={'Form_ID'}
-      >
-        Learn More
-      </button>
-      <a className="italic text-blue-500 underline">Click here to learn more</a>
-    </div>
-    {/* <div className="my-10 last:mb-0 first:mt-0 flex flex-col justify-center items-center w-full border-dashed border-red-500 border-2 px-4 py-8 rounded-md max-w-md bg-white/10 backdrop-blur-sm">
-        <h2 className="font-bold my-5 first:mt-0 last:mb-0">Do you want to lean more?</h2>
-        <button className="bg-amber-500 text-blue-950 font-bold h-16 w-full sm:w-96 rounded-full shadow-xl motion-reduced:animate-bounce " value={'Form_ID'}>Learn More</button>
-        <a className="underline italic text-blue-500">Click here to learn more</a>
-      </div> */}
-  </div>
-);
+        <h1 className="w-screen text-pretty text-center text-3xl font-bold leading-8 tracking-tight text-blue-950 backdrop-blur-sm [height:64px] xs:text-4xl xs:[height:80px] sm:text-6xl sm:[height:128px] md:max-w-3xl">
+          <Typewriter text={title} delay={100} />
+        </h1>
+
+        <p className="max-w-lg text-pretty text-center text-lg leading-8 text-blue-950/50 backdrop-blur-sm">
+          {content}
+        </p>
+
+        <div className="my-10 flex w-full max-w-md flex-col items-center justify-center rounded-md bg-white/5 px-4 py-8 backdrop-blur-sm first:mt-0 last:mb-0">
+          <h2 className="my-5 font-bold first:mt-0 last:mb-0">
+            Do you want to lean more?
+          </h2>
+          <button
+            onClick={() => dispatch({ type: 'TOGGLE_MODAL' })}
+            className="h-16 w-full rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 font-bold text-white shadow-xl sm:w-96"
+            value={'Form_ID'}
+          >
+            Learn More
+          </button>
+          <a
+            onClick={() => dispatch({ type: 'TOGGLE_MODAL' })}
+            className="italic text-blue-500 underline"
+          >
+            Click here to learn more
+          </a>
+        </div>
+      </div>
+    </>
+  );
+};
 
 // const Nanoparticle = (
 //   props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>

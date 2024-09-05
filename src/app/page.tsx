@@ -1,9 +1,13 @@
-import type { FC } from 'react';
-import type { StaticImageData } from 'next/image';
-import { Hero, Footer, Why, PartnersSection } from '@/components';
-// import { SparklesCore } from '@/components/ui/sparkles';
+import {
+  type HeroData,
+  type WhyData,
+  type PartnersSectionData,
+  Hero,
+  PartnersSection,
+  Why,
+  Footer,
+} from '@/components';
 
-// Import images
 import wilco from '../../public/images/wilco-logo.webp';
 import bpiFrance from '../../public/images/bpi-france-logo.webp';
 import cnrs from '../../public/images/cnrs-logo.webp';
@@ -14,28 +18,7 @@ import pantera from '../../public/images/pantera-logo.webp';
 import reseauEntreprendre from '../../public/images/reseau-entreprendre-logo.webp';
 import siric from '../../public/images/siric-logo.webp';
 import universiteDeMontpellier from '../../public/images/universite-de-montpellier-logo.webp';
-
-// Define interfaces
-export interface Partner {
-  imgSrc: StaticImageData;
-  alt: string;
-}
-
-export interface HeroData {
-  tag: string;
-  title: string;
-  content: string;
-}
-
-export interface WhyData {
-  content: string;
-  benefits: string[];
-}
-
-export interface PartnersSectionData {
-  partners: Partner[];
-  headline: string;
-}
+import { AppProvider } from '@/contexts';
 
 export interface HomeData {
   hero: HeroData;
@@ -43,7 +26,6 @@ export interface HomeData {
   partnersSection: PartnersSectionData;
 }
 
-// Define the data object
 const data: HomeData = {
   hero: {
     tag: 'Revolution in Cancer Treatment',
@@ -81,30 +63,37 @@ const data: HomeData = {
   },
 };
 
-const Home: FC = () => {
+const Home: React.FC = () => {
   return (
     <>
+      {/* <SparklesCore
+        id="tsparticlesfullpage"
+        background="transparent"
+        minSize={0.6}
+        maxSize={2}
+        particleDensity={20}
+        className="z-50 h-full w-full"
+        particleColor="#000"
+      /> */}
       <main className="relative z-50">
-        <Hero {...data.hero} />
+        <AppProvider>
+          <Hero {...data.hero} />
+        </AppProvider>
         <PartnersSection {...data.partnersSection} />
         <Why {...data.why} />
         <Footer />
       </main>
-      <div className="absolute inset-0 h-screen w-full bg-gradient-to-b from-white to-white"></div>
+      {/* <div className="absolute inset-0 h-screen w-full bg-gradient-to-b from-white to-white"></div> */}
     </>
   );
 };
 
 export default Home;
 
-{
-  /* <SparklesCore
-id="tsparticlesfullpage"
-background="transparent"
-minSize={0.6}
-maxSize={2}
-particleDensity={20}
-className="z-50 h-full w-full"
-particleColor="#000"
-/> */
-}
+export const Modal: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  return (
+    <div className="flex flex-col items-center justify-center">{children}</div>
+  );
+};

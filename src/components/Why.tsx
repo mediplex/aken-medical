@@ -1,5 +1,9 @@
 import { ArrowRightCircleIcon, CheckCircleIcon } from './ui';
-import type { WhyData } from '@/app/page';
+
+export interface WhyData {
+  content: string;
+  benefits: string[];
+}
 
 export const Why: React.FC<WhyData> = ({ benefits, content }) => {
   return (
