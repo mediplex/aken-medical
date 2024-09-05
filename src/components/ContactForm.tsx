@@ -67,7 +67,7 @@ export const ContactForm = (): ReactNode => {
   return (
     <div className="flex max-w-7xl flex-col items-center py-20 sm:mx-auto sm:px-6 lg:px-8">
       <form
-        className="flex w-full flex-col items-center gap-3 bg-white/30 p-5 sm:min-w-96 sm:rounded-3xl sm:shadow-2xl sm:backdrop-blur-lg"
+        className="xs:bg-white/80 flex w-full flex-col items-center gap-3 rounded-3xl bg-transparent p-5 sm:min-w-96 sm:shadow-2xl"
         onSubmit={handleSubmit(onSubmit)}
       >
         <h2 className="bg-gradient-to-r from-sky-500 to-violet-500 bg-clip-text text-center text-2xl font-bold tracking-tight text-transparent">
