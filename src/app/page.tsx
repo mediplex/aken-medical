@@ -89,11 +89,3 @@ const Home: React.FC = () => {
 };
 
 export default Home;
-
-export const Modal: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
-  return (
-    <div className="flex flex-col items-center justify-center">{children}</div>
-  );
-};
