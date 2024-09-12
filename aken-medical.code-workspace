@@ -10,7 +10,6 @@
     "prettier.requireConfig": true,
     "typescript.suggest.paths": false,
     "javascript.suggest.paths": false,
-    "tsimporter.filesToScan": ["**/*.ts", "**/*.tsx"],
     "files.associations": {
       "*.css": "tailwindcss",
     },
@@ -19,29 +18,19 @@
     "notebook.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
       "comments": "on",
+      "strings": "on",
     },
-    "editor.linkedEditing": true
-
-    //     "files.exclude": {
-    //         "**/node_modules": true,
-    //          "**/.git": true,
-    //          "**/.next":true,
-    //          "**/.husky":true,
-    //          "**/.": true
-    // }
+    "editor.linkedEditing": true,
   },
   "extensions": {
     "recommendations": [
       "bradlc.vscode-tailwindcss",
-      "aaron-bond.better-comments",
       "dbaeumer.vscode-eslint",
       "eamodio.gitlens",
-      "VisualStudioExptTeam.vscodeintellicode",
-      "VisualStudioExptTeam.intellicode-api-usage-examples",
       "ms-vscode.live-server",
       "PKief.material-icon-theme",
       "esbenp.prettier-vscode",
       "christian-kohler.path-intellisense",
     ],
-  }
+  },
 }

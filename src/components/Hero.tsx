@@ -1,6 +1,6 @@
 'use client';
 
-import { Modal, Typewriter } from '@/components';
+import { AskForm, Modal, Typewriter } from '@/components';
 import { useAppContext } from '@/contexts';
 
 export interface HeroData {
@@ -14,13 +14,15 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
 
   return (
     <>
-      <Modal showModal={state.isOpen} />
+      <Modal showModal={state.modal.isOpen}>
+        <AskForm />
+      </Modal>
       <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-1 p-4">
         <div className="relative rounded-md bg-blue-950/5 px-3 text-center text-sm leading-8 text-blue-950/80 backdrop-blur-sm">
           {tag}
         </div>
 
-        <h1 className="w-screen text-pretty text-center text-3xl font-bold leading-8 tracking-tight text-blue-950 backdrop-blur-sm [height:64px] xs:text-4xl xs:[height:80px] sm:text-6xl sm:[height:128px] md:max-w-3xl">
+        <h1 className="xs:text-4xl xs:[height:80px] w-screen text-pretty text-center text-3xl font-bold leading-8 tracking-tight text-blue-950 backdrop-blur-sm [height:64px] sm:text-6xl sm:[height:128px] md:max-w-3xl">
           <Typewriter text={title} delay={100} />
         </h1>
 
