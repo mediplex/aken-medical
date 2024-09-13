@@ -10,11 +10,11 @@ export interface HeroData {
 }
 
 export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
-  const { state, dispatch } = useAppContext();
+  const { dispatch } = useAppContext();
 
   return (
     <>
-      <Modal showModal={state.modal.isOpen}>
+      <Modal>
         <AskForm />
       </Modal>
       <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-1 p-4">

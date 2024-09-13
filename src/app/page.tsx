@@ -66,15 +66,6 @@ const data: HomeData = {
 const Home: React.FC = () => {
   return (
     <>
-      {/* <SparklesCore
-        id="tsparticlesfullpage"
-        background="transparent"
-        minSize={0.6}
-        maxSize={2}
-        particleDensity={20}
-        className="z-50 h-full w-full"
-        particleColor="#000"
-      /> */}
       <main className="relative z-50">
         <AppProvider>
           <Hero {...data.hero} />
@@ -83,7 +74,6 @@ const Home: React.FC = () => {
         <Why {...data.why} />
         <Footer />
       </main>
-      {/* <div className="absolute inset-0 h-screen w-full bg-gradient-to-b from-white to-white"></div> */}
     </>
   );
 };

@@ -2,6 +2,7 @@
   "name": "aken-medical",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -10,7 +11,8 @@
     "test": "echo 'Trust me no need for tests 😎'",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md,mjs}\""
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md,mjs}\"",
+    "clean": "rm -rf .next && rm -rf node_modules"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -33,19 +35,19 @@
     "react-hook-form": "^7.53.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^14.2.7",
+    "@next/bundle-analyzer": "^14.2.11",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/container-queries": "^0.1.1",
-    "@tailwindcss/forms": "^0.5.8",
+    "@tailwindcss/forms": "^0.5.9",
     "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^20.16.4",
+    "@types/node": "^20.16.5",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
-    "@typescript-eslint/eslint-plugin": "^8.4.0",
-    "@typescript-eslint/parser": "^8.4.0",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.7",
+    "eslint-config-next": "^14.2.11",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "husky": "^8.0.3",
@@ -54,7 +56,7 @@
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "sharp": "^0.33.5",
-    "tailwindcss": "^3.4.10",
-    "typescript": "^5.5.4"
+    "tailwindcss": "^3.4.11",
+    "typescript": "4.7.4"
   }
 }

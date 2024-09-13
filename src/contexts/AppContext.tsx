@@ -5,63 +5,66 @@ import { createContext, useContext, useReducer } from 'react';
 
 export interface AskFormData {
   formName: string;
-  step1: {
-    name: string;
-    email: string;
-    scientist: boolean;
-    medicalDoctor: boolean;
-    investor: boolean;
-    other: boolean;
-  };
-  step2: {
-    proofOfConcept: boolean;
-    usecase: boolean;
-    financialData: boolean;
-    leadership: boolean;
-  };
+  // steps: [
+  //   {
+  //     name: string;
+  //     email: string;
+  //     scientist: boolean;
+  //     medicalDoctor: boolean;
+  //     investor: boolean;
+  //     other: boolean;
+  //   },
+  //   {
+  //     proofOfConcept: boolean;
+  //     usecase: boolean;
+  //     financialData: boolean;
+  //     leadership: boolean;
+  //   },
+  // ];
 }
 export interface ModalData {
   isOpen: boolean;
 }
 
 interface AppState {
-  askForm: AskFormData;
+  // askForm: AskFormData;
   modal: ModalData;
 }
 
-type AppAction =
-  | { type: 'TOGGLE_MODAL' }
-  | { type: 'FORM_CHANGE'; payload: AskFormData };
+type AppAction = { type: 'TOGGLE_MODAL' } | { type: 'STEP_CHANGE' };
+// | { type: 'FORM_CHANGE'; payload: AskFormData }
+// | { type: 'FORM_SUBMIT'; payload: AskFormData }
+// | { type: 'FORM_SUCCESS' };
 
 const initialState: AppState = {
-  askForm: {
-    formName: '',
-    step1: {
-      name: '',
-      email: '',
-      investor: false,
-      medicalDoctor: false,
-      other: false,
-      scientist: false,
-    },
-    step2: {
-      financialData: false,
-      leadership: false,
-      proofOfConcept: false,
-      usecase: false,
-    },
-  },
+  // askForm: {
+  //   formName: '',
+  // steps: [
+  //   {
+  //     name: '',
+  //     email: '',
+  //     scientist: false,
+  //     medicalDoctor: false,
+  //     investor: false,
+  //     other: false,
+  //   },
+  //   {
+  //     proofOfConcept: false,
+  //     usecase: false,
+  //     financialData: false,
+  //     leadership: false,
+  //   },
+  // ],
+  // },
   modal: {
     isOpen: false,
   },
 };
 
-const modalFormReducer = (state: AppState, action: AppAction): AppState => {
+const AppReducer = (state: AppState, action: AppAction): AppState => {
   switch (action.type) {
     case 'TOGGLE_MODAL':
       return { ...state, modal: { isOpen: !state.modal.isOpen } };
-    case 'FORM_CHANGE':
-      return { ...state, askForm: { ...action.payload } };
     default:
       return state;
   }
@@ -78,7 +81,7 @@ const AppContext = createContext<
 export const AppProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const [state, dispatch] = useReducer(modalFormReducer, initialState);
+  const [state, dispatch] = useReducer(AppReducer, initialState);
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
@@ -92,7 +95,6 @@ export const useAppContext = (): {
   dispatch: React.Dispatch<AppAction>;
 } => {
   const context = useContext(AppContext);
-  console.log(context?.state);
   if (context === undefined) {
     throw new Error('useAppContext must be used within an AppProvider');
   }
