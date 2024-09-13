@@ -1,8 +1,15 @@
 {
   "compilerOptions": {
-    "types": ["react/canary", "react-dom/canary"],
+    "types": [
+      "react/canary",
+      "react-dom/canary"
+    ],
     "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,10 +27,17 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"],
-      "@/components": ["./src/components"],
-      "@/contexts": ["./src/contexts"]
-    }
+      "@/*": [
+        "./src/*"
+      ],
+      "@/components": [
+        "./src/components"
+      ],
+      "@/contexts": [
+        "./src/contexts"
+      ]
+    },
+    "target": "ES2017"
   },
   "include": [
     "next-env.d.ts",
@@ -32,5 +46,7 @@
     ".next/types/**/*.ts",
     "**/*.mjs"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

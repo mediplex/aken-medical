@@ -1,6 +1,12 @@
 import withBundleAnalyzer from '@next/bundle-analyzer';
 
 const nextConfig = {
+  experimental: {
+    reactCompiler: {
+      compilationMode: 'annotation',
+    },
+    ppr: 'incremental',
+  },
   typescript: {
     ignoreBuildErrors: false,
   },
