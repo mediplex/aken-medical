@@ -38,6 +38,9 @@ importers:
       react-hook-form:
         specifier: ^7.53.0
         version: 7.53.0(react@19.0.0-rc-94e652d5-20240912)
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@next/bundle-analyzer':
         specifier: ^14.2.11

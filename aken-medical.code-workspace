@@ -5,17 +5,23 @@
     },
   ],
   "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": "explicit"
+    },
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact"
+    ],
     "editor.formatOnSave": true,
     "eslint.enable": true,
     "prettier.requireConfig": true,
-    "typescript.suggest.paths": false,
-    "javascript.suggest.paths": false,
     "files.associations": {
       "*.css": "tailwindcss",
     },
     "tailwindCSS.emmetCompletions": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "notebook.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
       "comments": "on",
       "strings": "on",
@@ -24,13 +30,16 @@
   },
   "extensions": {
     "recommendations": [
-      "bradlc.vscode-tailwindcss",
       "dbaeumer.vscode-eslint",
-      "eamodio.gitlens",
-      "ms-vscode.live-server",
+      "GitHub.copilot",
+      "GitHub.copilot-chat",
+      "GitHub.github-vscode-theme",
+      "wix.vscode-import-cost",
       "PKief.material-icon-theme",
+      "ms-edgedevtools.vscode-edge-devtools",
       "esbenp.prettier-vscode",
-      "christian-kohler.path-intellisense",
+      "bradlc.vscode-tailwindcss",
+      "ms-vscode.vscode-speech"
     ],
   },
 }

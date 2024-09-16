@@ -45,7 +45,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "**/*.mjs"
-  ],
+, "src/components/ui/Stepper"  ],
   "exclude": [
     "node_modules"
   ]
