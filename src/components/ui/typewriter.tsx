@@ -18,7 +18,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 70 }) => {
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }, delay);
 
-      return (): void => clearTimeout(timeout);
+      return () => clearTimeout(timeout);
     }
   }, [currentIndex, delay, text]);
 
@@ -26,7 +26,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 70 }) => {
     <>
       <noscript>{text}</noscript>
       {currentText}
-      {currentIndex != text.length && (
+      {currentIndex !== text.length && (
         <span className="animate-ping font-light">|</span>
       )}
     </>

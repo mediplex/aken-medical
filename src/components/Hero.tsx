@@ -44,11 +44,7 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
         ref={dialogRef}
         className="w-80 rounded-3xl shadow-2xl backdrop:bg-white/80 backdrop:backdrop-blur-md"
       >
-        <form
-          method="dialog"
-          action={submitAction}
-          className="flex flex-col gap-4 p-4"
-        >
+        <form action={submitAction} className="flex flex-col gap-4 p-4">
           <div className="flex w-72 flex-col gap-4 overflow-hidden">
             {isLastSlide && (
               <button
@@ -66,10 +62,10 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
             </header>
 
             <div
-              className={`flex shrink-0 grow-0 basis-full ${isLastSlide && '-translate-x-full'} transition-all duration-500 ease-in @container/slider`}
+              className={`flex shrink-0 grow-0 basis-full ${isLastSlide && '-translate-x-full'} transition-all duration-200 ease-in @container/slider`}
             >
               <fieldset
-                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-300 ease-in`}
+                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-500 ease-in-out`}
               >
                 <legend className="font-bold text-emerald-950">
                   Please select what do you want to learn about
@@ -99,7 +95,7 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
               </fieldset>
 
               <fieldset
-                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${!isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-300 ease-in`}
+                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${!isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-500 ease-in-out`}
               >
                 <legend className="font-bold text-emerald-950">
                   Where do you want to receive the full report about the
@@ -130,6 +126,14 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
               </fieldset>
             </div>
           </div>
+          <button
+            onClick={toogleDialog}
+            type="button"
+            formMethod="dialog"
+            className="w-full rounded-full bg-rose-500 p-2 font-bold text-white"
+          >
+            Close
+          </button>
         </form>
         {!!state?.error && <p className="text-red-500">{state.error}</p>}
       </dialog>
@@ -147,7 +151,7 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
           {content}
         </p>
 
-        <div className="my-10 flex w-full max-w-md flex-col items-center justify-center rounded-md bg-white/5 px-4 py-8 ring backdrop-blur-sm first:mt-0 last:mb-0">
+        <div className="my-10 flex w-full max-w-md flex-col items-center justify-center rounded-md bg-white/5 px-4 py-8 backdrop-blur-sm first:mt-0 last:mb-0">
           <h2 className="my-5 font-bold first:mt-0 last:mb-0">
             Do you want to lean more?
           </h2>
