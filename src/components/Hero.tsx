@@ -1,7 +1,7 @@
 'use client';
 
-import { AskForm, Modal, Typewriter } from '@/components';
-import { useAppContext } from '@/contexts';
+import { Typewriter } from '@/components';
+import { useActionState, useRef, useState } from 'react';
 
 export interface HeroData {
   tag: string;
@@ -9,14 +9,131 @@ export interface HeroData {
   content: string;
 }
 
+const action = async (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  previousState: unknown,
+  formData: FormData
+): Promise<{ error?: string; message?: unknown }> => {
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  if (formData.get('name') !== 'Mehdi')
+    return { error: 'Name is already taken' };
+  else return { message: Object.entries(formData) };
+};
+
 export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
-  const { dispatch } = useAppContext();
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const [isLastSlide, setLastSlide] = useState(false);
+
+  const toogleLastSlide = (): void => {
+    setLastSlide(!isLastSlide);
+  };
+
+  const [state, submitAction, isPending] = useActionState(action, null);
+
+  const toogleDialog = (): void => {
+    if (!dialogRef.current) return;
+
+    if (dialogRef.current.hasAttribute('open')) dialogRef.current.close();
+    else dialogRef.current.showModal();
+  };
 
   return (
     <>
-      <Modal>
-        <AskForm />
-      </Modal>
+      <dialog
+        ref={dialogRef}
+        className="w-80 rounded-3xl shadow-2xl backdrop:bg-white/80 backdrop:backdrop-blur-md"
+      >
+        <form
+          method="dialog"
+          action={submitAction}
+          className="flex flex-col gap-4 p-4"
+        >
+          <div className="flex w-72 flex-col gap-4 overflow-hidden">
+            {isLastSlide && (
+              <button
+                onClick={toogleLastSlide}
+                type="button"
+                className="absolute flex size-8 items-center justify-center rounded-full bg-white p-2 text-xs font-bold text-emerald-950/50 shadow-xl"
+              >
+                &lt;
+              </button>
+            )}
+            <header className="flex h-8 shrink-0 grow-0 basis-full flex-row items-center justify-center">
+              <h2 className="self-center font-bold text-emerald-950/50">
+                Step&nbsp;{!isLastSlide ? '1' : '2'}/2
+              </h2>
+            </header>
+
+            <div
+              className={`flex shrink-0 grow-0 basis-full ${isLastSlide && '-translate-x-full'} transition-all duration-500 ease-in @container/slider`}
+            >
+              <fieldset
+                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-300 ease-in`}
+              >
+                <legend className="font-bold text-emerald-950">
+                  Please select what do you want to learn about
+                </legend>
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Enter your name"
+                />
+                <label htmlFor="email">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  title="Email"
+                  placeholder="Enter your email"
+                />
+                <button
+                  onClick={toogleLastSlide}
+                  type="button"
+                  className="w-full bg-teal-600 p-2 font-bold text-white"
+                >
+                  Next
+                </button>
+              </fieldset>
+
+              <fieldset
+                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${!isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-300 ease-in`}
+              >
+                <legend className="font-bold text-emerald-950">
+                  Where do you want to receive the full report about the
+                  project?
+                </legend>
+                <label htmlFor="profession">Profession</label>
+                <input
+                  type="text"
+                  name="profession"
+                  required
+                  placeholder="Enter your profession"
+                />
+                <label htmlFor="lab">Lab</label>
+                <input
+                  type="text"
+                  name="lab"
+                  required
+                  title="lab"
+                  placeholder="Enter your lab"
+                />
+                <button
+                  type="submit"
+                  className="w-full bg-teal-600 p-2 font-bold text-white"
+                  disabled={isPending}
+                >
+                  submit
+                </button>
+              </fieldset>
+            </div>
+          </div>
+        </form>
+        {!!state?.error && <p className="text-red-500">{state.error}</p>}
+      </dialog>
+
       <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-1 p-4">
         <div className="relative rounded-md bg-blue-950/5 px-3 text-center text-sm leading-8 text-blue-950/80 backdrop-blur-sm">
           {tag}
@@ -30,21 +147,17 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
           {content}
         </p>
 
-        <div className="my-10 flex w-full max-w-md flex-col items-center justify-center rounded-md bg-white/5 px-4 py-8 backdrop-blur-sm first:mt-0 last:mb-0">
+        <div className="my-10 flex w-full max-w-md flex-col items-center justify-center rounded-md bg-white/5 px-4 py-8 ring backdrop-blur-sm first:mt-0 last:mb-0">
           <h2 className="my-5 font-bold first:mt-0 last:mb-0">
             Do you want to lean more?
           </h2>
           <button
-            onClick={() => dispatch({ type: 'TOGGLE_MODAL' })}
+            onClick={toogleDialog}
             className="h-16 w-full rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 font-bold text-white shadow-xl sm:w-96"
-            value={'Form_ID'}
           >
             Learn More
           </button>
-          <a
-            onClick={() => dispatch({ type: 'TOGGLE_MODAL' })}
-            className="italic text-blue-500 underline"
-          >
+          <a onClick={toogleDialog} className="italic text-blue-500 underline">
             Click here to learn more
           </a>
         </div>
@@ -52,6 +165,14 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
     </>
   );
 };
+
+// const Dialog: React.FC<{
+//   children: ReactNode;
+//   ref: RefObject<HTMLDialogElement | null>;
+//   toogleDialog: () => void;
+// }> = ({ children, ref, toogleDialog }) => {
+//   return <dialog ref={ref}>{children}</dialog>;
+// };
 
 // const Nanoparticle = (
 //   props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>
