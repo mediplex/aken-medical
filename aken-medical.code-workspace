@@ -5,28 +5,58 @@
     },
   ],
   "settings": {
+    "editor.fontFamily": "'Cascadia Code PL', 'Cascadia Code', 'Cascadia Code Italic', monospace",
+    "terminal.integrated.fontFamily": "'Cascadia Code PL', 'Cascadia Code', 'Cascadia Code Italic', monospace",
+    "chat.editor.fontFamily": "'Cascadia Code PL', 'Cascadia Code', 'Cascadia Code Italic', monospace",
+    "editor.fontLigatures": true,
+    "editor.fontWeight": "500",
+    "editor.fontSize": 12,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorStyle": "block",
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": "explicit"
+      "source.fixAll.eslint": "explicit",
     },
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    ],
     "editor.formatOnSave": true,
-    "eslint.enable": true,
-    "prettier.requireConfig": true,
-    "files.associations": {
-      "*.css": "tailwindcss",
-    },
-    "tailwindCSS.emmetCompletions": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.quickSuggestions": {
       "comments": "on",
       "strings": "on",
     },
     "editor.linkedEditing": true,
+    "editor.tokenColorCustomizations": {
+      "textMateRules": [
+        {
+          "scope": [
+            "keyword",
+            "keyword.control",
+            "keyword.operator",
+            "keyword.other",
+            "storage.modifier",
+            "storage.type",
+          ],
+          "settings": {
+            "fontStyle": "italic",
+          },
+        },
+      ],
+    },
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+    ],
+    "eslint.enable": true,
+    "prettier.requireConfig": true,
+    "files.associations": {
+      "*.css": "tailwindcss",
+    },
+    "tailwindCSS.emmetCompletions": true,
+    "workbench.colorCustomizations": {
+      "editorCursor.foreground": "#FF0000",
+    },
   },
   "extensions": {
     "recommendations": [
@@ -36,10 +66,9 @@
       "GitHub.github-vscode-theme",
       "wix.vscode-import-cost",
       "PKief.material-icon-theme",
-      "ms-edgedevtools.vscode-edge-devtools",
       "esbenp.prettier-vscode",
       "bradlc.vscode-tailwindcss",
-      "ms-vscode.vscode-speech"
+      "ms-vscode.vscode-speech",
     ],
   },
 }
