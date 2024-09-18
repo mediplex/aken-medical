@@ -1,3 +1,5 @@
+// todo: add a form to the hero section
+
 'use client';
 
 import { Typewriter } from '@/components';
@@ -14,7 +16,9 @@ const action = async (
   previousState: unknown,
   formData: FormData
 ): Promise<{ error?: string; message?: unknown }> => {
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  console.log('submitting form data');
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  console.log('form data submitted');
   if (formData.get('name') !== 'Mehdi')
     return { error: 'Name is already taken' };
   else return { message: Object.entries(formData) };
@@ -32,37 +36,59 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
   const [state, submitAction, isPending] = useActionState(action, null);
 
   const toogleDialog = (): void => {
-    if (!dialogRef.current) return;
+    if (!dialogRef.current) {
+      return;
+    }
 
-    if (dialogRef.current.hasAttribute('open')) dialogRef.current.close();
-    else dialogRef.current.showModal();
+    if (dialogRef.current.hasAttribute('open')) {
+      dialogRef.current.close();
+      // document.body.classList.remove('overflow-hidden');
+    } else {
+      dialogRef.current.showModal();
+      // document.body.classList.add('overflow-hidden');
+    }
   };
 
   return (
     <>
       <dialog
         ref={dialogRef}
-        className="w-80 rounded-3xl shadow-2xl backdrop:bg-white/80 backdrop:backdrop-blur-md"
+        className={`text-md pointer-events-none inset-0 block w-80 translate-y-full scale-0 rounded-3xl p-0 opacity-0 transition-all duration-150 @container/dialog backdrop:backdrop-blur-sm open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100`}
+        onClick={(ev) => {
+          const target = ev.target as HTMLDialogElement;
+          if (target.nodeName === 'DIALOG') {
+            target.close();
+          }
+        }}
       >
         <form action={submitAction} className="flex flex-col gap-4 p-4">
           <div className="flex w-72 flex-col gap-4 overflow-hidden">
-            {isLastSlide && (
+            {/* {isLastSlide && (
+              
+            )} */}
+
+            <header className="flex h-8 shrink-0 grow-0 basis-full flex-row items-center justify-between">
               <button
                 onClick={toogleLastSlide}
                 type="button"
-                className="absolute flex size-8 items-center justify-center rounded-full bg-white p-2 text-xs font-bold text-emerald-950/50 shadow-xl"
+                className="font-bold text-emerald-950/50"
               >
                 &lt;
               </button>
-            )}
-            <header className="flex h-8 shrink-0 grow-0 basis-full flex-row items-center justify-center">
-              <h2 className="self-center font-bold text-emerald-950/50">
+              <h2 className="font-bold text-emerald-950/50">
                 Step&nbsp;{!isLastSlide ? '1' : '2'}/2
               </h2>
+              <button
+                onClick={toogleDialog}
+                type="button"
+                className="flex items-center justify-center p-2 font-bold text-emerald-950/50"
+              >
+                x
+              </button>
             </header>
 
             <div
-              className={`flex shrink-0 grow-0 basis-full ${isLastSlide && '-translate-x-full'} transition-all duration-200 ease-in @container/slider`}
+              className={`flex shrink-0 grow-0 basis-full ${isLastSlide && '-translate-x-full'} transition-all duration-150 ease-in @container/slider`}
             >
               <fieldset
                 className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-500 ease-in-out`}
@@ -76,14 +102,6 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
                   name="name"
                   required
                   placeholder="Enter your name"
-                />
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  title="Email"
-                  placeholder="Enter your email"
                 />
                 <button
                   onClick={toogleLastSlide}
@@ -101,20 +119,13 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
                   Where do you want to receive the full report about the
                   project?
                 </legend>
-                <label htmlFor="profession">Profession</label>
+                <label htmlFor="email">Email</label>
                 <input
-                  type="text"
-                  name="profession"
+                  type="email"
+                  name="email"
                   required
-                  placeholder="Enter your profession"
-                />
-                <label htmlFor="lab">Lab</label>
-                <input
-                  type="text"
-                  name="lab"
-                  required
-                  title="lab"
-                  placeholder="Enter your lab"
+                  title="Email"
+                  placeholder="Enter your email"
                 />
                 <button
                   type="submit"
@@ -129,7 +140,6 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
           <button
             onClick={toogleDialog}
             type="button"
-            formMethod="dialog"
             className="w-full rounded-full bg-rose-500 p-2 font-bold text-white"
           >
             Close
@@ -139,6 +149,7 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
       </dialog>
 
       <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-1 p-4">
+        {/* <hgroup></hgroup> */}
         <div className="relative rounded-md bg-blue-950/5 px-3 text-center text-sm leading-8 text-blue-950/80 backdrop-blur-sm">
           {tag}
         </div>
