@@ -22,7 +22,6 @@ const Dialog: React.FC<{
   }, [searchParams]);
 
   const handleClose = (): void => {
-    // Remove the 'form' query parameter from the URL
     if (!searchParams) return;
     const params = new URLSearchParams(searchParams.toString());
     params.delete('form');
@@ -33,7 +32,7 @@ const Dialog: React.FC<{
   return (
     <dialog
       ref={dialogRef}
-      className={`pointer-events-none inset-0 block w-80 translate-y-full scale-0 rounded-3xl bg-teal-200 p-0 opacity-0 transition-all duration-150 @container/dialog backdrop:backdrop-blur-sm open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100`}
+      className="pointer-events-none inset-0 block w-80 translate-y-full scale-0 select-none rounded-3xl bg-teal-100 p-0 opacity-0 transition-all duration-200 backdrop:backdrop-blur-sm open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100"
       onClose={handleClose}
     >
       {children}

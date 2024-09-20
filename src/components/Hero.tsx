@@ -1,10 +1,10 @@
 /**
  * [ ] useOptimistic()
  * [ ] Form/Dialog (header, main, footer)
- * [ ] Dialog
+ * [x] Dialog
  * [x] Manage Dialog State on on the URL (source: https://www.youtube.com/watch?v=ukpgxEemXsk&list=TLPQMTkwOTIwMjQTqVwnLDfqvQ&index=2)
- * [ ] add cn utility function twMerge + clsx
- * [ ] move the action to action file
+ * [x] add cn utility function twMerge + clsx
+ * [x] move the action to action file
  * [ ] update the form inputs
  * [ ] disable step 2 if step 1 is not valid
  */

@@ -24,7 +24,8 @@
       "@/components": ["./src/components"],
       "@/contexts": ["./src/contexts"],
       "@/data": ["./src/data"],
-      "@/actions": ["./src/actions"]
+      "@/actions": ["./src/actions"],
+      "@/utils": ["./src/utils"]
     },
     "target": "ES2017"
   },
