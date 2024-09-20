@@ -1,15 +1,8 @@
 {
   "compilerOptions": {
-    "types": [
-      "react/canary",
-      "react-dom/canary"
-    ],
+    "types": ["react/canary", "react-dom/canary"],
     "forceConsistentCasingInFileNames": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -27,15 +20,11 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@/components": [
-        "./src/components"
-      ],
-      "@/contexts": [
-        "./src/contexts"
-      ]
+      "@/*": ["./src/*"],
+      "@/components": ["./src/components"],
+      "@/contexts": ["./src/contexts"],
+      "@/data": ["./src/data"],
+      "@/actions": ["./src/actions"]
     },
     "target": "ES2017"
   },
@@ -45,8 +34,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "**/*.mjs"
-, "src/components/ui/Stepper"  ],
-  "exclude": [
-    "node_modules"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

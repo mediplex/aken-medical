@@ -2,160 +2,26 @@
  * [ ] useOptimistic()
  * [ ] Form/Dialog (header, main, footer)
  * [ ] Dialog
- * [ ] Manage Dialog State on on the URL (source: https://www.youtube.com/watch?v=ukpgxEemXsk&list=TLPQMTkwOTIwMjQTqVwnLDfqvQ&index=2)
+ * [x] Manage Dialog State on on the URL (source: https://www.youtube.com/watch?v=ukpgxEemXsk&list=TLPQMTkwOTIwMjQTqVwnLDfqvQ&index=2)
  * [ ] add cn utility function twMerge + clsx
  * [ ] move the action to action file
  * [ ] update the form inputs
+ * [ ] disable step 2 if step 1 is not valid
  */
 
 'use client';
 
 import { Typewriter } from '@/components';
-import { useActionState, useRef, useState } from 'react';
-
+import Link from 'next/link';
 export interface HeroData {
   tag: string;
   title: string;
   content: string;
 }
 
-const action = async (
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  previousState: unknown,
-  formData: FormData
-): Promise<{ error?: string; message?: unknown }> => {
-  console.log('submitting form data');
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  console.log('form data submitted');
-  if (formData.get('name') !== 'Mehdi')
-    return { error: 'Name is already taken' };
-  else return { message: Object.entries(formData) };
-};
-
 export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  const [isLastSlide, setLastSlide] = useState(false);
-
-  const toogleLastSlide = (): void => {
-    setLastSlide(!isLastSlide);
-  };
-
-  const [state, submitAction, isPending] = useActionState(action, null);
-
-  const toogleDialog = (): void => {
-    if (!dialogRef.current) {
-      return;
-    }
-
-    if (dialogRef.current.hasAttribute('open')) {
-      dialogRef.current.close();
-      // document.body.classList.remove('overflow-hidden');
-    } else {
-      dialogRef.current.showModal();
-      // document.body.classList.add('overflow-hidden');
-    }
-  };
-
   return (
     <>
-      <dialog
-        ref={dialogRef}
-        className={`text-md pointer-events-none inset-0 block w-80 translate-y-full scale-0 rounded-3xl p-0 opacity-0 transition-all duration-150 @container/dialog backdrop:backdrop-blur-sm open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100`}
-        onClick={(ev) => {
-          const target = ev.target as HTMLDialogElement;
-          if (target.nodeName === 'DIALOG') {
-            target.close();
-          }
-        }}
-      >
-        <form action={submitAction} className="flex flex-col gap-4 p-4">
-          <div className="flex w-72 flex-col gap-4 overflow-hidden">
-            {/* {isLastSlide && (
-              
-            )} */}
-
-            <header className="flex h-8 shrink-0 grow-0 basis-full flex-row items-center justify-between">
-              <button
-                onClick={toogleLastSlide}
-                type="button"
-                className="font-bold text-emerald-950/50"
-              >
-                &lt;
-              </button>
-              <h2 className="font-bold text-emerald-950/50">
-                Step&nbsp;{!isLastSlide ? '1' : '2'}/2
-              </h2>
-              <button
-                onClick={toogleDialog}
-                type="button"
-                className="flex items-center justify-center p-2 font-bold text-emerald-950/50"
-              >
-                x
-              </button>
-            </header>
-
-            <div
-              className={`flex shrink-0 grow-0 basis-full ${isLastSlide && '-translate-x-full'} transition-all duration-150 ease-in @container/slider`}
-            >
-              <fieldset
-                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${isLastSlide ? 'opacity-0' : 'opacity-100'} ${isLastSlide ? 'pointer-events-none' : 'pointer-events-auto'} transition-all duration-500 ease-in-out`}
-              >
-                <legend className="font-bold text-emerald-950">
-                  Please select what do you want to learn about
-                </legend>
-                <label htmlFor="name">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  required
-                  placeholder="Enter your name"
-                />
-                <button
-                  onClick={toogleLastSlide}
-                  type="button"
-                  className="w-full bg-teal-600 p-2 font-bold text-white"
-                >
-                  Next
-                </button>
-              </fieldset>
-
-              <fieldset
-                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${!isLastSlide ? 'opacity-0' : 'opacity-100'} ${isLastSlide ? 'pointer-events-auto' : 'pointer-events-none'} transition-all duration-500 ease-in-out`}
-              >
-                <legend className="font-bold text-emerald-950">
-                  Where do you want to receive the full report about the
-                  project?
-                </legend>
-                <label htmlFor="email">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  required
-                  title="Email"
-                  placeholder="Enter your email"
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-teal-600 p-2 font-bold text-white"
-                  disabled={isPending}
-                >
-                  submit
-                </button>
-              </fieldset>
-            </div>
-          </div>
-          <button
-            onClick={toogleDialog}
-            type="button"
-            className="w-full rounded-full bg-rose-500 p-2 font-bold text-white"
-          >
-            Close
-          </button>
-        </form>
-        {!!state?.error && <p className="text-red-500">{state.error}</p>}
-      </dialog>
-
       <div className="container mx-auto flex h-screen flex-col items-center justify-center gap-1 p-4">
         {/* <hgroup></hgroup> */}
         <div className="relative rounded-md bg-blue-950/5 px-3 text-center text-sm leading-8 text-blue-950/80 backdrop-blur-sm">
@@ -174,28 +40,24 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
           <h2 className="my-5 font-bold first:mt-0 last:mb-0">
             Do you want to lean more?
           </h2>
-          <button
-            onClick={toogleDialog}
-            className="h-16 w-full rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 font-bold text-white shadow-xl sm:w-96"
+          <Link
+            href={`?${new URLSearchParams({ form: 'learn-more', step: '1' })}`}
+            className="flex h-16 w-full items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 font-bold text-white shadow-xl sm:w-96"
           >
             Learn More
-          </button>
-          <a onClick={toogleDialog} className="italic text-blue-500 underline">
+          </Link>
+
+          <Link
+            href={`?${new URLSearchParams({ form: 'learn-more', step: '1' })}`}
+            className="italic text-blue-500 underline"
+          >
             Click here to learn more
-          </a>
+          </Link>
         </div>
       </div>
     </>
   );
 };
-
-// const Dialog: React.FC<{
-//   children: ReactNode;
-//   ref: RefObject<HTMLDialogElement | null>;
-//   toogleDialog: () => void;
-// }> = ({ children, ref, toogleDialog }) => {
-//   return <dialog ref={ref}>{children}</dialog>;
-// };
 
 // const Nanoparticle = (
 //   props: JSX.IntrinsicAttributes & SVGProps<SVGSVGElement>

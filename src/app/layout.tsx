@@ -16,7 +16,8 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps): JSX.Element {
   return (
-    <html lang="en" className="select-none">
+    // className="select-none"
+    <html lang="en">
       <body className={inter.className}>{children}</body>
     </html>
   );

@@ -18,7 +18,7 @@ export const Typewriter: React.FC<TypewriterProps> = ({ text, delay = 70 }) => {
         setCurrentIndex((prevIndex) => prevIndex + 1);
       }, delay);
 
-      return () => clearTimeout(timeout);
+      return (): void => clearTimeout(timeout);
     }
   }, [currentIndex, delay, text]);
 
