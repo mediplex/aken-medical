@@ -1,4 +1,12 @@
-// todo: add a form to the hero section
+/**
+ * [ ] useOptimistic()
+ * [ ] Form/Dialog (header, main, footer)
+ * [ ] Dialog
+ * [ ] Manage Dialog State on on the URL (source: https://www.youtube.com/watch?v=ukpgxEemXsk&list=TLPQMTkwOTIwMjQTqVwnLDfqvQ&index=2)
+ * [ ] add cn utility function twMerge + clsx
+ * [ ] move the action to action file
+ * [ ] update the form inputs
+ */
 
 'use client';
 
@@ -91,7 +99,7 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
               className={`flex shrink-0 grow-0 basis-full ${isLastSlide && '-translate-x-full'} transition-all duration-150 ease-in @container/slider`}
             >
               <fieldset
-                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-500 ease-in-out`}
+                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${isLastSlide ? 'opacity-0' : 'opacity-100'} ${isLastSlide ? 'pointer-events-none' : 'pointer-events-auto'} transition-all duration-500 ease-in-out`}
               >
                 <legend className="font-bold text-emerald-950">
                   Please select what do you want to learn about
@@ -113,7 +121,7 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
               </fieldset>
 
               <fieldset
-                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${!isLastSlide ? 'opacity-0' : 'opacity-100'} transition-all duration-500 ease-in-out`}
+                className={`flex shrink-0 grow-0 basis-full flex-col gap-2 *:rounded-3xl ${!isLastSlide ? 'opacity-0' : 'opacity-100'} ${isLastSlide ? 'pointer-events-auto' : 'pointer-events-none'} transition-all duration-500 ease-in-out`}
               >
                 <legend className="font-bold text-emerald-950">
                   Where do you want to receive the full report about the
