@@ -1,12 +1,16 @@
 /**
  * [ ] useOptimistic()
  * [ ] Form/Dialog (header, main, footer)
- * [x] Dialog
- * [x] Manage Dialog State on on the URL (source: https://www.youtube.com/watch?v=ukpgxEemXsk&list=TLPQMTkwOTIwMjQTqVwnLDfqvQ&index=2)
+ * [ ] update the form inputs + learnMoreFormAction
+ * [ ] disable step 2 if step 1 is not valid
+ * [ ] add react-icons
+ * [ ] add zod
+ * [ ] update contact form and remove react-hook-form
+ * [ ] create a standard for spacing (group elements with a close relationship)
+ * [x] Manage Dialog State on on the URL
  * [x] add cn utility function twMerge + clsx
  * [x] move the action to action file
- * [ ] update the form inputs
- * [ ] disable step 2 if step 1 is not valid
+ * [x] Dialog
  */
 
 'use client';

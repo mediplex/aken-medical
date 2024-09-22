@@ -27,18 +27,19 @@ const HomePage: React.FC = () => {
   // don't update the step if form is not defined
 
   return (
-    <main className="flex flex-col gap-10 p-10">
-      <Suspense>
-        <Dialog>
-          <LearnMoreForm />
-        </Dialog>
-      </Suspense>
-      <Hero
-        title={HOME_DATA.hero.title}
-        tag={HOME_DATA.hero.tag}
-        content={HOME_DATA.hero.content}
-      />
-    </main>
+    <>
+      <main className="flex flex-col">
+        <Suspense></Suspense>
+        <Hero
+          title={HOME_DATA.hero.title}
+          tag={HOME_DATA.hero.tag}
+          content={HOME_DATA.hero.content}
+        />
+      </main>
+      <Dialog>
+        <LearnMoreForm />
+      </Dialog>
+    </>
   );
 };
 

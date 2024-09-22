@@ -17,12 +17,6 @@ importers:
       '@tsparticles/slim':
         specifier: ^3.5.0
         version: 3.5.0
-      babel-plugin-react-compiler:
-        specifier: 0.0.0-experimental-fe484b5-20240912
-        version: 0.0.0-experimental-fe484b5-20240912
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
       google-auth-library:
         specifier: ^9.14.1
         version: 9.14.1
@@ -41,9 +35,6 @@ importers:
       react-hook-form:
         specifier: ^7.53.0
         version: 7.53.0(react@19.0.0-rc-94e652d5-20240912)
-      tailwind-merge:
-        specifier: ^2.5.2
-        version: 2.5.2
       zod:
         specifier: ^3.23.8
         version: 3.23.8
@@ -81,6 +72,12 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.45)
+      babel-plugin-react-compiler:
+        specifier: 0.0.0-experimental-fe484b5-20240912
+        version: 0.0.0-experimental-fe484b5-20240912
+      clsx:
+        specifier: ^2.1.1
+        version: 2.1.1
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -111,6 +108,9 @@ importers:
       sharp:
         specifier: ^0.33.5
         version: 0.33.5
+      tailwind-merge:
+        specifier: ^2.5.2
+        version: 2.5.2
       tailwindcss:
         specifier: ^3.4.11
         version: 3.4.11

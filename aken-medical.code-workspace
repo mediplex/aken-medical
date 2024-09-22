@@ -57,7 +57,7 @@
     "workbench.colorCustomizations": {
       "editorCursor.foreground": "#FF0000",
       "editorIndentGuide.activeBackground1": "#777777",
-      "editorIndentGuide.background1":"default"
+      "editorIndentGuide.background1": "default",
     },
   },
   "extensions": {
@@ -67,10 +67,10 @@
       "GitHub.copilot-chat",
       "GitHub.github-vscode-theme",
       "wix.vscode-import-cost",
-      "PKief.material-icon-theme",
       "esbenp.prettier-vscode",
       "bradlc.vscode-tailwindcss",
       "ms-vscode.vscode-speech",
+      "codeium.codeium",
     ],
   },
 }
