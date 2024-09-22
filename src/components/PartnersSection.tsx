@@ -1,6 +1,10 @@
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
-import { BeakerIcon, CurrencyDollarIcon, TruckIcon } from './ui';
+import {
+  FaFlask as BeakerIcon,
+  FaDollarSign as CurrencyDollarIcon,
+  FaTruck as TruckIcon,
+} from 'react-icons/fa6';
 
 export interface Partner {
   imgSrc: StaticImageData;

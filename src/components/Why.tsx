@@ -1,4 +1,7 @@
-import { ArrowRightCircleIcon, CheckCircleIcon } from './ui';
+import {
+  FaArrowRight as ArrowRightCircleIcon,
+  FaCheck as CheckCircleIcon,
+} from 'react-icons/fa6';
 
 export interface WhyData {
   content: string;

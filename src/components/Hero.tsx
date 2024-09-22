@@ -1,12 +1,12 @@
 /**
- * [ ] useOptimistic()
- * [ ] Form/Dialog (header, main, footer)
  * [ ] update the form inputs + learnMoreFormAction
+ * [ ] create a standard for spacing (group elements with a close relationship)
+ * [ ] Form/Dialog (header, main, footer)
  * [ ] disable step 2 if step 1 is not valid
  * [ ] add react-icons
  * [ ] add zod
  * [ ] update contact form and remove react-hook-form
- * [ ] create a standard for spacing (group elements with a close relationship)
+ * [ ] useOptimistic()
  * [x] Manage Dialog State on on the URL
  * [x] add cn utility function twMerge + clsx
  * [x] move the action to action file

@@ -6,16 +6,14 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import type { HTMLInputTypeAttribute } from 'react';
 import React, { useActionState } from 'react';
+import type { IconType } from 'react-icons';
 import {
-  CloseIcon,
-  EnvelopeIcon,
-  ExclamationCircleIcon,
-  UserIcon,
-} from './icons';
-
-// const LearnMoreForm: React.FC<{
-//   children: ReactNode;
-// }> = (children)
+  FaEnvelope as EnvelopeIcon,
+  FaCircleExclamation as ExclamationCircleIcon,
+  FaUser as UserIcon,
+  FaChevronLeft as ChevronLeft,
+  FaXmark as CloseIcon,
+} from 'react-icons/fa6';
 
 const LearnMoreForm: React.FC = () => {
   const searchParams = useSearchParams();
@@ -28,27 +26,7 @@ const LearnMoreForm: React.FC = () => {
   return (
     <form action={submitAction} className="flex flex-col gap-4 p-4">
       <div className="flex w-72 flex-col gap-4 overflow-hidden">
-        <header className="flex h-8 shrink-0 grow-0 basis-full flex-row items-center justify-between">
-          <Link
-            href={`?${new URLSearchParams({ form: 'learn-more', step: '1' })}`}
-            className={cn(
-              'text-2xl font-thin text-emerald-950/50 transition-all duration-500 ease-in-out',
-              {
-                'pointer-events-none': step === '1',
-                'opacity-0': step === '1',
-              }
-            )}
-          >
-            &lt;
-          </Link>
-          <h2 className="font-bold text-emerald-950/50">Step&nbsp;{step}/2</h2>
-          <Link
-            href={`/`}
-            className="m-2 rounded-full transition-all duration-300 ease-in-out hover:scale-125"
-          >
-            <CloseIcon className="size-6 stroke-emerald-500/50 transition-all duration-300 ease-in-out hover:stroke-red-500" />
-          </Link>
-        </header>
+        <FormHeader step={step} />
 
         <main
           className={cn(
@@ -67,8 +45,9 @@ const LearnMoreForm: React.FC = () => {
               }
             )}
           >
-            <legend className="font-bold text-emerald-950">
-              Please select what do you want to learn about
+            <legend className="font-bold text-teal-950">
+              <h2 className="flex font-bold">Step&nbsp;{step}/2</h2>&nbsp;
+              <span>Please select what do you want to learn about:</span>
             </legend>
 
             <div className="flex items-center gap-1">
@@ -78,7 +57,7 @@ const LearnMoreForm: React.FC = () => {
 
             <Link
               href={`?${new URLSearchParams({ form: 'learn-more', step: '2' })}`}
-              className="flex w-full items-center justify-center bg-teal-600 p-2 font-bold text-white"
+              className="flex w-full items-center justify-center bg-teal-500 p-2 font-bold text-white"
             >
               Next
             </Link>
@@ -92,8 +71,10 @@ const LearnMoreForm: React.FC = () => {
               }
             )}
           >
-            <legend className="font-bold text-emerald-950">
-              Where do you want to receive the full report about the project?
+            <legend className="font-bold text-teal-950">
+              <p>
+                Where do you want to receive the full report about the project?
+              </p>
             </legend>
             <Input
               label="Email"
@@ -124,24 +105,38 @@ const LearnMoreForm: React.FC = () => {
   );
 };
 
-// const FormHeader: React.FC<{ children: ReactNode }> = (children) => {
-//   return (
-
-//   );
-// };
-
-// const FormFooter: React.FC<{ children: ReactNode }> = (children) => {
-//   return (
-
-//   )
-// }
+const FormHeader: React.FC<{ step: string }> = ({ step }) => {
+  return (
+    <header className="relative flex-1">
+      <Link
+        href={`?${new URLSearchParams({ form: 'learn-more', step: '1' })}`}
+        className={cn(
+          'absolute left-0 top-0 flex items-center gap-1 text-teal-950/50 transition-all duration-300 ease-out hover:text-teal-500',
+          {
+            'pointer-events-none': step === '1',
+            'opacity-0': step === '1',
+          }
+        )}
+      >
+        <ChevronLeft className="size-4" />
+        <span>Back</span>
+      </Link>
+      <Link
+        href={`/`}
+        className="absolute right-0 top-0 flex items-center gap-1 text-teal-950/50 transition-all duration-300 ease-out hover:text-teal-500"
+      >
+        <CloseIcon className="size-4" />
+      </Link>
+    </header>
+  );
+};
 
 const Input: React.FC<{
   label: string;
   type: HTMLInputTypeAttribute | 'textarea';
   name: string;
   placeholder: string;
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  Icon: IconType;
   error?: { message: string } | null;
 }> = ({ label, type, name, Icon, error, placeholder }) => {
   return (
@@ -150,24 +145,24 @@ const Input: React.FC<{
         <div className="flex flex-col items-start">
           <label
             htmlFor={name}
-            className="block text-sm font-medium leading-6 text-blue-950"
+            className="block text-sm font-medium leading-6 text-teal-950"
           >
             {label}
           </label>
           <div className="relative mt-2 w-full rounded-md shadow-sm">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-              <Icon className="size-6 fill-none stroke-blue-950/30" />
+              <Icon className="size-5 text-teal-100" />
             </div>
             <input
               id={name}
               name={name}
               placeholder={placeholder}
               type={type}
-              className="block w-full rounded-full border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+              className="block w-full rounded-full border-0 px-10 py-1.5 text-teal-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
             />
             {!!error && (
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-                <ExclamationCircleIcon className="size-6 fill-red-500" />
+                <ExclamationCircleIcon className="size-6 text-red-500" />
               </div>
             )}
           </div>
@@ -181,15 +176,15 @@ const Input: React.FC<{
         <div className="flex flex-col items-start">
           <label
             htmlFor="msg"
-            className="block text-sm font-medium leading-6 text-blue-950"
+            className="block text-sm font-medium leading-6 text-teal-950"
           >
-            Message
+            {label}
           </label>
           <div className="relative mt-2 w-full rounded-md shadow-sm">
             <div className="pointer-events-none absolute inset-y-0 left-0 flex pl-3 pt-2">
               <Icon
                 aria-hidden="true"
-                className="size-6 fill-none stroke-blue-950/30"
+                className="size-6 fill-none text-teal-950/30"
               />
             </div>
             <textarea
@@ -197,13 +192,13 @@ const Input: React.FC<{
               id={name}
               placeholder="Tell us how we can help you"
               rows={4}
-              className="block w-full rounded-xl border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+              className="block w-full rounded-xl border-0 px-10 py-1.5 text-teal-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
             />
             {!!error && (
               <div className="pointer-events-none absolute inset-y-0 right-0 flex pr-3 pt-2">
                 <ExclamationCircleIcon
                   aria-hidden="true"
-                  className="size-6 fill-red-500"
+                  className="size-6 text-red-500"
                 />
               </div>
             )}

@@ -2,14 +2,14 @@
 import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 import {
-  UserIcon,
-  ExclamationCircleIcon,
-  EnvelopeIcon,
-  ChatBubbleLeftEllipsisIcon,
-  PaperAirplaneIcon,
-  CheckCircleIcon,
-  ArrowRightCircleIcon,
-} from './ui';
+  FaUser as UserIcon,
+  FaExclamation as ExclamationCircleIcon,
+  FaEnvelope as EnvelopeIcon,
+  FaComment as ChatBubbleLeftEllipsisIcon,
+  FaPaperPlane as PaperAirplaneIcon,
+  FaCheck as CheckCircleIcon,
+  FaCircleArrowRight as ArrowRightCircleIcon,
+} from 'react-icons/fa6';
 import type { ReactNode } from 'react';
 
 export type ContactFormData = {
