@@ -3,9 +3,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 
-// import Link from 'next/link';
+import Link from 'next/link';
 import React from 'react';
-// import { FaXmark as CloseIcon } from 'react-icons/fa6';
+import { FaXmark as CloseIcon } from 'react-icons/fa6';
 
 const Dialog: React.FC<{
   children: ReactNode;
@@ -36,12 +36,12 @@ const Dialog: React.FC<{
   return (
     <dialog
       ref={dialogRef}
-      className="pointer-events-none absolute inset-0 block w-80 translate-y-full scale-0 select-none rounded-3xl bg-teal-100 p-0 opacity-0 transition-all duration-200 backdrop:backdrop-blur-sm open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100"
+      className="pointer-events-none flex h-screen w-screen translate-y-full scale-0 select-none items-center justify-center rounded-xl bg-white p-0 transition-all duration-1000 open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100"
       onClose={handleClose}
     >
-      {/* <Link href={`/`} className="">
-        <CloseIcon className="size-6 flex-1 transition-all duration-300 ease-in-out hover:scale-125 hover:text-red-500 hover:opacity-100" />
-      </Link> */}
+      <Link href={`/`} className="absolute right-0 top-0 m-1 rounded-full p-2">
+        <CloseIcon className="size-6 flex-1 text-black/30 transition-all duration-300 ease-in-out hover:scale-125 hover:text-red-500" />
+      </Link>
       {children}
     </dialog>
   );

@@ -1,12 +1,16 @@
 /**
- * [ ] update the form inputs + learnMoreFormAction
- * [ ] create a standard for spacing (group elements with a close relationship)
+ * [ ] breakdown Qualification components into smaller components
+ * [ ] update contact form and remove react-hook-form
+ * [ ] Inputs: add required marker "after:pointer-events-none after:ml-0.5 after:text-red-500 after:content-['*']"
  * [ ] Form/Dialog (header, main, footer)
  * [ ] disable step 2 if step 1 is not valid
- * [ ] add react-icons
  * [ ] add zod
- * [ ] update contact form and remove react-hook-form
  * [ ] useOptimistic()
+ *
+ *
+ * [x] add react-icons
+ * [x] create a standard for spacing (group elements with a close relationship)
+ * [x] update the form inputs + learnMoreFormAction
  * [x] Manage Dialog State on on the URL
  * [x] add cn utility function twMerge + clsx
  * [x] move the action to action file
@@ -48,14 +52,14 @@ export const Hero: React.FC<HeroData> = ({ tag, title, content }) => {
             href={`?${new URLSearchParams({ form: 'learn-more', step: '1' })}`}
             className="flex h-16 w-full items-center justify-center rounded-full bg-gradient-to-r from-blue-500 via-indigo-500 to-violet-500 font-bold text-white shadow-xl sm:w-96"
           >
-            Learn More
+            Download the whitepaper now
           </Link>
 
           <Link
             href={`?${new URLSearchParams({ form: 'learn-more', step: '1' })}`}
             className="italic text-blue-500 underline"
           >
-            Click here to learn more
+            Click here to download the whitepaper
           </Link>
         </div>
       </div>
