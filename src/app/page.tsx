@@ -17,8 +17,9 @@ import React from 'react';
 import HOME_DATA from '@/data/home-data.json';
 import { Dialog } from '@/components';
 import { Suspense } from 'react';
+import type { NextPage } from 'next';
 
-const HomePage: React.FC = () => {
+const HomePage: NextPage = () => {
   // const form =
   //   Array.isArray(searchParams.form) || ''
   //     ? permanentRedirect('/')
@@ -29,16 +30,17 @@ const HomePage: React.FC = () => {
   return (
     <>
       <main className="flex flex-col">
-        <Suspense></Suspense>
         <Hero
           title={HOME_DATA.hero.title}
           tag={HOME_DATA.hero.tag}
           content={HOME_DATA.hero.content}
         />
       </main>
-      <Dialog>
-        <LearnMoreForm />
-      </Dialog>
+      <Suspense>
+        <Dialog>
+          <LearnMoreForm />
+        </Dialog>
+      </Suspense>
     </>
   );
 };

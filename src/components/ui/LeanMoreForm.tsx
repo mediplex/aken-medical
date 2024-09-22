@@ -149,7 +149,7 @@ const Input: React.FC<{
       {type !== 'textarea' ? (
         <div className="flex flex-col items-start">
           <label
-            htmlFor="name"
+            htmlFor={name}
             className="block text-sm font-medium leading-6 text-blue-950"
           >
             {label}
@@ -159,6 +159,7 @@ const Input: React.FC<{
               <Icon className="size-6 fill-none stroke-blue-950/30" />
             </div>
             <input
+              id={name}
               name={name}
               placeholder={placeholder}
               type={type}
@@ -192,7 +193,8 @@ const Input: React.FC<{
               />
             </div>
             <textarea
-              id="msg"
+              name={name}
+              id={name}
               placeholder="Tell us how we can help you"
               rows={4}
               className="block w-full rounded-xl border-0 px-10 py-1.5 text-blue-950 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
