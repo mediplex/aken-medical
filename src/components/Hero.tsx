@@ -1,5 +1,6 @@
 /**
- * [ ] breakdown Qualification components into smaller components
+ * [x] breakdown Qualification components into smaller components
+ * [  ] add a checkIcon when the input is valid and exclamationIcon when the input is invalid. Only apply those marks if the input is touched
  * [ ] update contact form and remove react-hook-form
  * [ ] Inputs: add required marker "after:pointer-events-none after:ml-0.5 after:text-red-500 after:content-['*']"
  * [ ] Form/Dialog (header, main, footer)

@@ -36,10 +36,13 @@ const Dialog: React.FC<{
   return (
     <dialog
       ref={dialogRef}
-      className="pointer-events-none flex h-screen w-screen translate-y-full scale-0 select-none items-center justify-center rounded-xl bg-white p-0 transition-all duration-1000 open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100"
+      className="rounded-xltransition-all pointer-events-none flex w-full min-w-96 translate-y-full scale-0 select-none items-center justify-center rounded-3xl duration-1000 open:pointer-events-auto open:translate-y-0 open:scale-100 open:opacity-100 sm:max-w-3xl"
       onClose={handleClose}
     >
-      <Link href={`/`} className="absolute right-0 top-0 m-1 rounded-full p-2">
+      <Link
+        href={`/`}
+        className="fixed right-0 top-0 z-10 m-2 rounded-full p-2"
+      >
         <CloseIcon className="size-6 flex-1 text-black/30 transition-all duration-300 ease-in-out hover:scale-125 hover:text-red-500" />
       </Link>
       {children}
