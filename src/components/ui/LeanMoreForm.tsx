@@ -26,14 +26,18 @@ const LearnMoreForm: React.FC = () => {
   const [state, submitAction] = useActionState(learnMoreFormAction, null);
 
   return (
-    <form action={submitAction} className="flex flex-1">
+    <form action={submitAction} className="flex shrink-0 grow-0 basis-full">
+      {/* <header className="flex"></header> */}
       {/* stepper container */}
       <Slider currentStep={currentStep}>
         {/* Slide 1 */}
         <Slide index={1} currentStep={currentStep}>
-          <h2 className="text-3xl">Step 1</h2>
+          <h2 className="mb-8 text-3xl font-semibold text-emerald-950/30">
+            Step&nbsp;{currentStep}
+            <span className="text-emerald-950/15">/2</span>
+          </h2>
 
-          <p className="text-xl text-teal-950">
+          <p className="mb-4 text-xl text-teal-950">
             Tell us a little be about yourself to personalize{' '}
             <strong>your report</strong>.
           </p>
@@ -52,14 +56,12 @@ const LearnMoreForm: React.FC = () => {
             <IconCheckbox Icon={FaBook} name="other" label="Other" />
           </div>
 
-          <footer>
-            <Link
-              href={`?${new URLSearchParams({ form: 'learn-more', step: '2' })}`}
-              className="flex h-20 w-full flex-row items-center justify-center gap-2 rounded-full bg-teal-600 p-2 text-lg font-semibold text-white shadow-md"
-            >
-              Next
-            </Link>
-          </footer>
+          <Link
+            href={`?${new URLSearchParams({ form: 'learn-more', step: '2' })}`}
+            className="mt-8 flex h-20 w-full flex-row items-center justify-center gap-2 rounded-full bg-teal-600 p-2 text-lg font-semibold text-white"
+          >
+            Next
+          </Link>
         </Slide>
 
         {/* Slide 2 */}
@@ -120,10 +122,11 @@ const Slider: React.FC<{
   }
 
   return (
-    <div className="flex flex-1 overflow-hidden">
+    <div className="flex shrink-0 grow-0 basis-full overflow-hidden">
       <div
         className={cn(
-          `flex shrink-0 grow-0 basis-full transition-all duration-300 ease-in`,
+          'flex shrink-0 grow-0 basis-full',
+          'transition-all duration-300 ease-in',
           {
             '-translate-x-full': currentStep === 2,
           }
@@ -143,6 +146,7 @@ const Slide: React.FC<{
   return (
     <section
       className={cn(
+        'px-4 py-8',
         `shrink-0 grow-0 basis-full flex-col opacity-0 transition-all duration-500 ease-in-out`,
         {
           'flex opacity-100': currentStep === index,

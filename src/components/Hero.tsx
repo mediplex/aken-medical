@@ -1,4 +1,5 @@
 /**
+ * [x] Simplify the slider component
  * [x] breakdown Qualification components into smaller components
  * [  ] add a checkIcon when the input is valid and exclamationIcon when the input is invalid. Only apply those marks if the input is touched
  * [ ] update contact form and remove react-hook-form
