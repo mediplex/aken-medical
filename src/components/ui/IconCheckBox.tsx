@@ -9,7 +9,7 @@ const IconCheckbox: React.FC<{
   return (
     <label
       htmlFor={name}
-      className="flex h-16 items-center justify-between gap-4 rounded-2xl p-3 text-teal-950 ring-1 ring-teal-950/50 has-[:checked]:bg-teal-500/10 has-[:checked]:ring-teal-500"
+      className="flex h-16 items-center justify-between gap-4 rounded-2xl p-3 text-teal-950 ring-1 ring-teal-950/50 has-[:checked]:bg-teal-50 has-[:checked]:ring-teal-500"
     >
       <input type="checkbox" name={name} id={name} className="peer hidden" />
       <div className="flex gap-2">

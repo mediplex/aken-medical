@@ -39,10 +39,7 @@ const TextInput: React.FC<{
         </div>
       ) : (
         <div className="flex flex-col items-start">
-          <label
-            htmlFor="msg"
-            className="block text-sm font-medium leading-6 text-teal-950"
-          >
+          <label htmlFor="msg" className="text-teal-950">
             {label}
           </label>
           <div className="relative mt-2 w-full rounded-md shadow-sm">

@@ -20,13 +20,6 @@ import { Suspense } from 'react';
 import type { NextPage } from 'next';
 
 const HomePage: NextPage = () => {
-  // const form =
-  //   Array.isArray(searchParams.form) || ''
-  //     ? permanentRedirect('/')
-  //     : searchParams.form;
-
-  // don't update the step if form is not defined
-
   return (
     <>
       <main className="flex flex-col">
@@ -37,7 +30,7 @@ const HomePage: NextPage = () => {
         />
       </main>
       <Suspense>
-        <Dialog>
+        <Dialog id="learn-more">
           <LearnMoreForm />
         </Dialog>
       </Suspense>

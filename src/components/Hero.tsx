@@ -1,15 +1,18 @@
 /**
- * [x] Simplify the slider component
- * [x] breakdown Qualification components into smaller components
- * [  ] add a checkIcon when the input is valid and exclamationIcon when the input is invalid. Only apply those marks if the input is touched
+ * [ ] add zod
+ * [ ] add safe animation to all transition
+ * [ ] add a checkIcon when the input is valid and exclamationIcon when the input is invalid. Only apply those marks if the input is touched
  * [ ] update contact form and remove react-hook-form
  * [ ] Inputs: add required marker "after:pointer-events-none after:ml-0.5 after:text-red-500 after:content-['*']"
- * [ ] Form/Dialog (header, main, footer)
  * [ ] disable step 2 if step 1 is not valid
- * [ ] add zod
  * [ ] useOptimistic()
  *
  *
+ * [x] Form/Dialog (header, main, footer)
+ * [x] add header and footer in the learnMoreFormAction dialog
+ * [x] use <2StepSlider/> +  "delay-??" in the header and the footer
+ * [x] breakdown Qualification components into smaller components
+ * [x] Simplify the slider component
  * [x] add react-icons
  * [x] create a standard for spacing (group elements with a close relationship)
  * [x] update the form inputs + learnMoreFormAction
