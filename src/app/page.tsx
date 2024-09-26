@@ -13,9 +13,12 @@ import { Hero, LearnMoreForm } from '@/components';
 
 // import data from '@/data/home-data.json';
 
+import dynamic from 'next/dynamic';
+const Dialog = dynamic(() => import('@/components/ui/Dialog'), { ssr: false });
+
 import React from 'react';
 import HOME_DATA from '@/data/home-data.json';
-import { Dialog } from '@/components';
+// import { Dialog } from '@/components';
 import { Suspense } from 'react';
 import type { NextPage } from 'next';
 
@@ -29,8 +32,8 @@ const HomePage: NextPage = () => {
           content={HOME_DATA.hero.content}
         />
       </main>
-      <Suspense>
-        <Dialog id="learn-more">
+      <Suspense fallback={<></>}>
+        <Dialog>
           <LearnMoreForm />
         </Dialog>
       </Suspense>

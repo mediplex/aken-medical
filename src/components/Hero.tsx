@@ -8,6 +8,7 @@
  * [ ] useOptimistic()
  *
  *
+ * [x] add onClose to the dialog/modal
  * [x] Form/Dialog (header, main, footer)
  * [x] add header and footer in the learnMoreFormAction dialog
  * [x] use <2StepSlider/> +  "delay-??" in the header and the footer
@@ -21,8 +22,6 @@
  * [x] move the action to action file
  * [x] Dialog
  */
-
-'use client';
 
 import { Typewriter } from '@/components';
 import Link from 'next/link';

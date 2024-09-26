@@ -22,7 +22,8 @@ import { TextInput } from './TextInput';
 
 const LearnMoreForm: React.FC = () => {
   const searchParams = useSearchParams();
-  const currentStep: number = parseInt(searchParams?.get('step') as string);
+  const currentStep: number =
+    parseInt(searchParams?.get('step') as string) || 1;
 
   const closeLink = useMemo((): string => {
     if (!searchParams) return '?';
@@ -51,7 +52,7 @@ const LearnMoreForm: React.FC = () => {
   const [, submitAction] = useActionState(learnMoreFormAction, null);
 
   return (
-    <form action={submitAction} className="flex flex-col justify-center">
+    <form action={submitAction} className="flex w-full flex-col justify-center">
       <header className="flex shrink-0 grow-0 items-center justify-between px-4 py-8">
         <Link
           href={stepOneLink}
@@ -159,10 +160,10 @@ const Slider: React.FC<{
   }
 
   return (
-    <div className="flex shrink-0 grow-0 overflow-hidden">
+    <div className="flex w-full shrink-0 grow-0 overflow-hidden">
       <div
         className={cn(
-          'flex shrink-0 grow-0 basis-full',
+          'flex w-full shrink-0 grow-0',
           'transition-all duration-300 ease-in',
           {
             '-translate-x-full': currentStep === 2,
@@ -184,7 +185,7 @@ const Slide: React.FC<{
     <section
       className={cn(
         'px-4 py-4',
-        `shrink-0 grow-0 basis-full flex-col opacity-0 transition-all duration-500 ease-in-out`,
+        `w-full shrink-0 grow-0 flex-col opacity-0 transition-all duration-500 ease-in-out`,
         {
           'flex opacity-100': currentStep === index,
           'pointer-events-auto': currentStep === index,
