@@ -5,3 +5,4 @@ export * from './Team';
 export * from './Why';
 export * from './ContactForm';
 export * from './ui';
+export * from './LearnMoreForm';

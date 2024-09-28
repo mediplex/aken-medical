@@ -1,7 +1,9 @@
 /**
- * [ ] add zod
+ * [ ] handle ctionState https://www.youtube.com/watch?v=ffveQQtxNgM
+ * [ ] use onInvalid and pattern + requried to validate inputs
+ * [ ] useId to generate ids for the inputs
+ * [ ] add zod + handle errors
  * [ ] add safe animation to all transition
- * [ ] add a checkIcon when the input is valid and exclamationIcon when the input is invalid. Only apply those marks if the input is touched
  * [ ] update contact form and remove react-hook-form
  * [ ] Inputs: add required marker "after:pointer-events-none after:ml-0.5 after:text-red-500 after:content-['*']"
  * [ ] disable step 2 if step 1 is not valid

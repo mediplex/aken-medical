@@ -26,7 +26,7 @@ const TextInput: React.FC<{
               name={name}
               placeholder={placeholder}
               type={type}
-              className="flex-1 border-0 text-teal-950 placeholder:text-teal-950/50 focus:ring-0"
+              className="flex-1 rounded-full border-0 text-teal-950 placeholder:text-teal-950/50 focus:ring-0"
             />
             {/* {!!error && ( */}
             {<FaCircleExclamation className="size-6 text-red-500" />}

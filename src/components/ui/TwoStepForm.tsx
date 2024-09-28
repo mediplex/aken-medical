@@ -1,26 +1,17 @@
 'use client';
 
-import { learnMoreFormAction } from '@/actions';
 import { cn } from '@/utils';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import type { ReactNode } from 'react';
 import React, { useActionState, useMemo } from 'react';
-import {
-  FaEnvelope,
-  FaUser,
-  FaPaperPlane,
-  FaStethoscope,
-  FaFlaskVial,
-  FaSackDollar,
-  FaBook,
-  FaXmark,
-  FaChevronLeft,
-} from 'react-icons/fa6';
-import { IconCheckbox } from './IconCheckBox';
-import { TextInput } from './TextInput';
+import { FaPaperPlane, FaXmark, FaChevronLeft } from 'react-icons/fa6';
 
-const LearnMoreForm: React.FC = () => {
+const TwoStepForm: React.FC<{
+  children: ReactNode;
+  form: string;
+  action: (state: unknown, payload: FormData) => Promise<unknown> | unknown;
+}> = ({ children, form, action }) => {
   const searchParams = useSearchParams();
   const currentStep: number =
     parseInt(searchParams?.get('step') as string) || 1;
@@ -36,20 +27,21 @@ const LearnMoreForm: React.FC = () => {
   const stepOneLink = useMemo((): string => {
     if (!searchParams) return '?';
     const params = new URLSearchParams(searchParams.toString());
-    params.set('form', 'learn-more');
+    params.set('form', form);
     params.set('step', '1');
     return `?${params.toString()}`;
-  }, [searchParams]);
+  }, [form, searchParams]);
 
   const stepTwoLink = useMemo((): string => {
     if (!searchParams) return '?';
     const params = new URLSearchParams(searchParams.toString());
-    params.set('form', 'learn-more');
+    params.set('form', form);
     params.set('step', '2');
     return `?${params.toString()}`;
-  }, [searchParams]);
+  }, [form, searchParams]);
 
-  const [, submitAction] = useActionState(learnMoreFormAction, null);
+  const [state, submitAction] = useActionState(action, null);
+  console.log(state);
 
   return (
     <form action={submitAction} className="flex w-full flex-col justify-center">
@@ -78,53 +70,11 @@ const LearnMoreForm: React.FC = () => {
 
       <Slider currentStep={currentStep}>
         {/* Slide 1 */}
-        <Slide index={1} currentStep={currentStep}>
-          <h3 className="mb-4 text-xl text-teal-950">
-            Tell us a little be about yourself to personalize{' '}
-            <strong>your report</strong>.
-          </h3>
-          <div className="grid grid-cols-2 gap-4">
-            <IconCheckbox Icon={FaStethoscope} name="doctor" label="Doctor" />
-            <IconCheckbox
-              Icon={FaFlaskVial}
-              name="scientist"
-              label="Scientist"
-            />
-            <IconCheckbox
-              Icon={FaSackDollar}
-              name="investor"
-              label="investor"
-            />
-            <IconCheckbox Icon={FaBook} name="other" label="Other" />
-          </div>
-        </Slide>
-
-        {/* Slide 2 */}
-        <Slide index={2} currentStep={currentStep}>
-          <h3 className="text-xl text-teal-950">
-            Where do you want to receive the full report about the project?
-          </h3>
-          <TextInput
-            label="Name"
-            type="text"
-            name="name"
-            placeholder="Enter your name"
-            Icon={FaUser}
-          />
-          <TextInput
-            label="Email"
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            Icon={FaEnvelope}
-          />
-        </Slide>
+        {children}
       </Slider>
-      {/* {!!state?.error && <p className="text-red-500">{state.error}</p>} */}
       <Slider currentStep={currentStep}>
         <Slide index={1} currentStep={currentStep}>
           <Link
-            // href={`?${new URLSearchParams({ form: 'learn-more', step: '2' })}`}
             href={stepTwoLink}
             shallow
             className="flex h-20 w-full items-center justify-center gap-2 rounded-full bg-teal-600 p-2 text-lg font-semibold text-white"
@@ -142,9 +92,6 @@ const LearnMoreForm: React.FC = () => {
           </button>
         </Slide>
       </Slider>
-      {/* <footer className="flex shrink-0 grow-0 items-center px-4 py-8">
-        
-      </footer> */}
     </form>
   );
 };
@@ -197,4 +144,4 @@ const Slide: React.FC<{
   );
 };
 
-export { LearnMoreForm };
+export { TwoStepForm, Slide as Step };
