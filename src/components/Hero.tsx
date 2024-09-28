@@ -1,5 +1,5 @@
 /**
- * [ ] handle ctionState https://www.youtube.com/watch?v=ffveQQtxNgM
+ * [-] handle actionState https://www.youtube.com/watch?v=ffveQQtxNgM
  * [ ] use onInvalid and pattern + requried to validate inputs
  * [ ] useId to generate ids for the inputs
  * [ ] add zod + handle errors
