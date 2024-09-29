@@ -1,13 +1,14 @@
 /**
  * [-] handle actionState https://www.youtube.com/watch?v=ffveQQtxNgM
- * [ ] use onInvalid and pattern + requried to validate inputs
+ * [-] use onInvalid and pattern + requried to validate inputs
  * [ ] useId to generate ids for the inputs
  * [ ] add zod + handle errors
  * [ ] add safe animation to all transition
  * [ ] update contact form and remove react-hook-form
  * [ ] Inputs: add required marker "after:pointer-events-none after:ml-0.5 after:text-red-500 after:content-['*']"
- * [ ] disable step 2 if step 1 is not valid
- * [ ] useOptimistic()
+ * [?] disable step 2 if step 1 is not valid
+ * [?] useOptimistic()
+ * [ ] add thank you page with phone number and email address for urgent contact
  *
  *
  * [x] add onClose to the dialog/modal

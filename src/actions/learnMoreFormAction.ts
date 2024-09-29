@@ -1,3 +1,16 @@
+// import { z } from 'zod';
+
+// const learnMoreFormSchema = z.object({
+//   form: z.literal('learnMoreForm'),
+//   //timestamp: z.number(), //server time
+//   doctor: z.boolean(),
+//   scientist: z.boolean(),
+//   investor: z.boolean(),
+//   other: z.boolean(),
+//   name: z.string().trim().min(2, { message: '' }).max(50, { message: '' }),
+//   email: z.string().trim().email({ message: '' }),
+// });
+
 const learnMoreFormAction = async (
   previousState: unknown,
   formData: FormData

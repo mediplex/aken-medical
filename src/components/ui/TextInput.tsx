@@ -1,9 +1,9 @@
 import type { IconType } from 'react-icons';
-import { FaCircleExclamation } from 'react-icons/fa6';
+import { FaArrowLeft, FaCircleExclamation } from 'react-icons/fa6';
 
 const TextInput: React.FC<{
   label: string;
-  type: 'text' | 'email' | 'tel' | 'textarea';
+  type: 'text' | 'email' | 'textarea';
   name: string;
   placeholder: string;
   Icon: IconType;
@@ -20,16 +20,22 @@ const TextInput: React.FC<{
             {label}
           </label>
           <div className="flex w-full items-center gap-1 rounded-full px-3 py-1 ring-1 ring-teal-950/50 has-[:focus]:ring-2 has-[:focus]:ring-teal-500">
-            <Icon className="size-5 text-teal-950/30" />
             <input
               id={name}
               name={name}
+              required
+              defaultValue={undefined}
               placeholder={placeholder}
               type={type}
-              className="flex-1 rounded-full border-0 text-teal-950 placeholder:text-teal-950/50 focus:ring-0"
+              className="peer flex-1 rounded-full border-0 text-teal-950 placeholder:text-teal-950/50 autofill:bg-transparent focus:ring-0"
             />
-            {/* {!!error && ( */}
-            {<FaCircleExclamation className="size-6 text-red-500" />}
+            <Icon className="position order-first size-5 text-teal-950/30" />
+
+            {!error ? (
+              <FaArrowLeft className="order-last hidden size-6 text-teal-500 peer-focus:block" />
+            ) : (
+              <FaCircleExclamation className="order-last size-6 text-red-500" />
+            )}
           </div>
           {!!error && (
             <p id="name-error" className="mt-2 text-sm text-red-500">
@@ -58,10 +64,10 @@ const TextInput: React.FC<{
             />
             {!!error && (
               <div className="pointer-events-none absolute inset-y-0 right-0 flex pr-3 pt-2">
-                <FaCircleExclamation
+                {/* <FaCircleExclamation
                   aria-hidden="true"
                   className="size-6 text-red-500"
-                />
+                /> */}
               </div>
             )}
           </div>

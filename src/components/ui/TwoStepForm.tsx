@@ -40,11 +40,12 @@ const TwoStepForm: React.FC<{
     return `?${params.toString()}`;
   }, [form, searchParams]);
 
-  const [state, submitAction] = useActionState(action, null);
+  const [state, formAction] = useActionState(action, null);
   console.log(state);
 
   return (
-    <form action={submitAction} className="flex w-full flex-col justify-center">
+    <form action={formAction} className="flex w-full flex-col justify-center">
+      <input type="hidden" name={form} readOnly required defaultValue={form} />
       <header className="flex shrink-0 grow-0 items-center justify-between px-4 py-8">
         <Link
           href={stepOneLink}
@@ -131,6 +132,7 @@ const Slide: React.FC<{
   return (
     <section
       className={cn(
+        'gap-4',
         'px-4 py-4',
         `w-full shrink-0 grow-0 flex-col opacity-0 transition-all duration-500 ease-in-out`,
         {
