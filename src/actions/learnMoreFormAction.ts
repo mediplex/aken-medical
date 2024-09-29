@@ -1,3 +1,4 @@
+'use server';
 // import { z } from 'zod';
 
 // const learnMoreFormSchema = z.object({
@@ -11,17 +12,53 @@
 //   email: z.string().trim().email({ message: '' }),
 // });
 
+import { google } from 'googleapis';
+
 const learnMoreFormAction = async (
   previousState: unknown,
   formData: FormData
 ): Promise<{ error?: string; message?: unknown }> => {
-  if (previousState) return { error: 'Form already submitted' };
-  console.log('submitting form data');
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  console.log('form data submitted');
-  if (formData.get('name') !== 'Mehdi')
-    return { error: 'Name is already taken' };
-  else return { message: Object.entries(formData) };
+  console.log(Object.fromEntries(formData.entries()));
+  try {
+    const auth = new google.auth.GoogleAuth({
+      credentials: JSON.parse(
+        process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON || '{}'
+      ),
+      scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+    });
+    const data = Object.fromEntries(formData.entries());
+    await auth.getClient();
+    const sheets = google.sheets({ version: 'v4', auth });
+
+    const valueInputOption = 'USER_ENTERED';
+
+    const parisTime = new Date().toLocaleString('en-US', {
+      timeZone: 'Europe/Paris',
+    });
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.SPREADSHEET_ID,
+      valueInputOption,
+      range: process.env.RANGE,
+      requestBody: {
+        values: [
+          [
+            parisTime,
+            data.form,
+            data.name,
+            data.email,
+            '',
+            data.doctor,
+            data.scientist,
+            data.investor,
+            data.other,
+          ],
+        ],
+      },
+    });
+    return { message: 'Success!' };
+  } catch (error) {
+    return { error: (error as Error).message };
+  }
 };
 
-export { learnMoreFormAction };
+export default learnMoreFormAction;

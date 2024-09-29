@@ -1,3 +1,4 @@
+import { useId } from 'react';
 import type { IconType } from 'react-icons';
 import { FaArrowLeft, FaCircleExclamation } from 'react-icons/fa6';
 
@@ -9,19 +10,20 @@ const TextInput: React.FC<{
   Icon: IconType;
   error?: { message: string } | null;
 }> = ({ label, type, name, Icon, error, placeholder }) => {
+  const inputId = useId();
   return (
     <>
       {type !== 'textarea' ? (
         <div className="flex flex-col items-start gap-1">
           <label
-            htmlFor={name}
+            htmlFor={inputId}
             className="text-teal-950 after:pointer-events-none after:ml-0.5 after:text-red-500 after:content-['*']"
           >
             {label}
           </label>
           <div className="flex w-full items-center gap-1 rounded-full px-3 py-1 ring-1 ring-teal-950/50 has-[:focus]:ring-2 has-[:focus]:ring-teal-500">
             <input
-              id={name}
+              id={inputId}
               name={name}
               required
               defaultValue={undefined}

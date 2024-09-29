@@ -1,6 +1,6 @@
 'use client';
 
-import { learnMoreFormAction } from '@/actions';
+import learnMoreFormAction from '@/actions/learnMoreFormAction';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
 import {
@@ -30,7 +30,7 @@ const LearnMoreForm: React.FC = () => {
         <div className="grid grid-cols-2 gap-4">
           <IconCheckbox Icon={FaStethoscope} name="doctor" label="Doctor" />
           <IconCheckbox Icon={FaFlaskVial} name="scientist" label="Scientist" />
-          <IconCheckbox Icon={FaSackDollar} name="investor" label="investor" />
+          <IconCheckbox Icon={FaSackDollar} name="investor" label="Investor" />
           <IconCheckbox Icon={FaBook} name="other" label="Other" />
         </div>
       </Step>

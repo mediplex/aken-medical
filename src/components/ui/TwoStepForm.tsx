@@ -45,7 +45,7 @@ const TwoStepForm: React.FC<{
 
   return (
     <form action={formAction} className="flex w-full flex-col justify-center">
-      <input type="hidden" name={form} readOnly required defaultValue={form} />
+      <input type="hidden" name="form" readOnly required defaultValue={form} />
       <header className="flex shrink-0 grow-0 items-center justify-between px-4 py-8">
         <Link
           href={stepOneLink}
